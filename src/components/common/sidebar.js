@@ -1,24 +1,19 @@
-import React from "react";
-import { connect } from "react-redux";
-import { NavLink } from "react-router-dom";
-import { ProSidebar, Menu, MenuItem, SidebarHeader } from "react-pro-sidebar";
+import React from 'react';
+import { connect } from 'react-redux';
+import { NavLink, useLocation } from 'react-router-dom';
+import { ProSidebar, Menu, MenuItem, SidebarHeader } from 'react-pro-sidebar';
 import {
   setSidebarCollapse,
   setSidebarVisibility,
-} from "../../actions/sidebar";
-import { getSidebarMenuClasses } from "../../utility/common";
-import { constants } from "../../constants";
-import "react-pro-sidebar/dist/css/styles.css";
-import "../../styles/sidebar.scss";
+} from '../../actions/sidebar';
+import { getSidebarMenuClasses } from '../../utility/common';
+import { constants } from '../../constants';
+import 'react-pro-sidebar/dist/css/styles.css';
+import '../../styles/sidebar.scss';
 
-const Sidebar = ({
-  isCollapsed,
-  profile,
-  isVisible,
-  setSidebarVisibility,
-  location,
-}) => {
-  let sidebarMenuClasses = getSidebarMenuClasses(location.pathname);
+const Sidebar = ({ isCollapsed, profile, isVisible, setSidebarVisibility }) => {
+  const location = useLocation();
+  const sidebarMenuClasses = getSidebarMenuClasses(location);
   const closeSidebar = () => setSidebarVisibility(false);
   const { manageUsersPlaceholder, dashboardPlaceholder } = constants.sidebar;
   return (

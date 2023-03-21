@@ -1,9 +1,9 @@
 import React from 'react';
 import { Container, Row, Col, Card, Form } from 'react-bootstrap';
-import { Input, Checkbox, Button } from '../../components';
-import { showToast, useStateCallback } from '../../utility/common';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
+import { Input, Checkbox, Button } from '../../components';
+import { showToast, useStateCallback } from '../../utility/common';
 import schema from '../../schema/addNewUser';
 import { constants } from '../../constants';
 import { addNewUser } from '../../apis/manageUsers';

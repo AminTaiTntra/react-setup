@@ -1,6 +1,6 @@
-import React from "react";
-import { Route, Redirect } from "react-router-dom";
-import { AdminLayout } from "../components";
+import React from 'react';
+import { Route, Navigate } from 'react-router-dom';
+import { AdminLayout } from '../components';
 
 const AdminRoute = ({
   component: Component,
@@ -20,16 +20,16 @@ const AdminRoute = ({
             {...props}
           />
         ) : isAuthenticated ? (
-          <Redirect
+          <Navigate
             to={{
-              pathname: "/dashboard",
+              pathname: '/dashboard',
               state: { from: props.location },
             }}
           />
         ) : (
-          <Redirect
+          <Navigate
             to={{
-              pathname: "/login",
+              pathname: '/login',
               state: { from: props.location },
             }}
           />

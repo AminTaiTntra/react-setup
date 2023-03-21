@@ -1,22 +1,23 @@
-import React, { useEffect } from "react";
+import React, { useEffect } from 'react';
 import {
   BrowserRouter as Router,
-  Switch,
+  // Switch,
   Route,
-  Redirect,
+  // Redirect,
   useLocation,
-} from "react-router-dom";
-import { connect } from "react-redux";
-import { Toaster } from "react-hot-toast";
-import { setReduxLoaderCount } from "../actions/loader";
-import UserRoute from "./userRoute";
-import AdminRoute from "./adminRoute";
-import Login from "../pages/login";
-import AddNewUser from "../pages/addNewUser";
-import Profile from "../pages/profile";
-import Dashboard from "../pages/dashboard";
-import ManageUsers from "../pages/manageUsers";
-import EditUser from "../pages/editUser";
+  Navigate,
+} from 'react-router-dom';
+import { connect } from 'react-redux';
+import { Toaster } from 'react-hot-toast';
+import { setReduxLoaderCount } from '../actions/loader';
+import UserRoute from './userRoute';
+import AdminRoute from './adminRoute';
+import Login from '../pages/login';
+import AddNewUser from '../pages/addNewUser';
+import Profile from '../pages/profile';
+import Dashboard from '../pages/dashboard';
+import ManageUsers from '../pages/manageUsers';
+import EditUser from '../pages/editUser';
 
 // To lazy load the components and for better code splitting
 // const Login = lazy(() => import("../pages/login"));
@@ -29,7 +30,7 @@ const ScrollToTop = (props) => {
   useEffect(() => {
     window.scrollTo({
       top: 0,
-      behavior: "smooth",
+      behavior: 'smooth',
     });
   }, [pathname]);
   return props.children;
@@ -44,13 +45,13 @@ const Routes = ({ token, loaderCount, setReduxLoaderCount, profile }) => {
   return (
     <Router>
       {/* <Suspense fallback={<FullScreenLoader />}> */}
-      <Switch>
+      <Routes>
         <ScrollToTop>
           <Route
             exact
             path="/"
             render={() => (
-              <Redirect to={isAuthenticated ? "/dashboard" : "/login"} />
+              <Navigate to={isAuthenticated ? '/dashboard' : '/login'} />
             )}
           />
           <Route
@@ -58,7 +59,7 @@ const Routes = ({ token, loaderCount, setReduxLoaderCount, profile }) => {
             path="/login"
             render={(props) =>
               isAuthenticated ? (
-                <Redirect to="/dashboard" />
+                <Navigate to="/dashboard" />
               ) : (
                 <Login {...props} />
               )
@@ -103,7 +104,7 @@ const Routes = ({ token, loaderCount, setReduxLoaderCount, profile }) => {
             exact
           />
         </ScrollToTop>
-      </Switch>
+      </Routes>
       {/* </Suspense> */}
       <Toaster
         position="bottom-right"

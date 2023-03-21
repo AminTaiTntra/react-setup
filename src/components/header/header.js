@@ -1,15 +1,16 @@
-import React, { useEffect } from "react";
-import { connect } from "react-redux";
-import { Navbar, Container } from "react-bootstrap";
-import { HeaderDropdown } from "../index";
-import { logout } from "../../actions/login";
-import { setProfileData } from "../../actions/profile";
+import React, { useEffect } from 'react';
+import { connect } from 'react-redux';
+import { Navbar, Container } from 'react-bootstrap';
+import { useLocation } from 'react-router-dom';
+import { HeaderDropdown } from '../index';
+import { logout } from '../../actions/login';
+import { setProfileData } from '../../actions/profile';
 import {
   setSidebarCollapse,
   setSidebarVisibility,
-} from "../../actions/sidebar";
-import { getHeaderTitle, showToast } from "../../utility/common";
-import "../../styles/header.scss";
+} from '../../actions/sidebar';
+import { getHeaderTitle, showToast } from '../../utility/common';
+import '../../styles/header.scss';
 
 const Header = ({
   profile,
@@ -19,23 +20,22 @@ const Header = ({
   setSidebarCollapse,
   setSidebarVisibility,
   isVisible,
-  location,
 }) => {
   useEffect(() => {
     setProfileData().then((res) => {
       if (!res.status) showToast(res.error_message);
     });
-  }, []);
-
+  });
+  const location = useLocation();
   const toggleCollapse = () => setSidebarCollapse(!isCollapsed);
   const toggleVisibility = () => setSidebarVisibility(!isVisible);
-  let headerTitle = getHeaderTitle(location.pathname);
+  const headerTitle = getHeaderTitle(location.pathname);
   return (
     <Navbar fixed="top">
       <Container className="justify-content-between">
         <i
           className={`collapse-menu-btn ${
-            isCollapsed ? "fas fa-angle-right" : "fas fa-angle-left"
+            isCollapsed ? 'fas fa-angle-right' : 'fas fa-angle-left'
           }`}
           onClick={toggleCollapse}
         />

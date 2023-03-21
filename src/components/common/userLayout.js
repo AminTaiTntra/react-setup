@@ -1,11 +1,11 @@
-import React from "react";
-import { Sidebar, Header, Footer, FullScreenLoader } from "../index";
-import "bootstrap/dist/css/bootstrap.min.css";
-import "../../styles/common/index.scss";
-import "../../styles/appStyle.scss";
+import React from 'react';
+import { Sidebar, Header, Footer } from '../index';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import '../../styles/common/index.scss';
+import '../../styles/appStyle.scss';
 
 const UserLayout = (props) => {
-  const { loaderCount, component: Component, ...rest } = props;
+  const { component: Component, ...rest } = props;
   return (
     <>
       <Sidebar {...rest} />
@@ -13,7 +13,6 @@ const UserLayout = (props) => {
       <main>
         <Component {...rest} />
       </main>
-      {loaderCount > 0 && <FullScreenLoader />}
       <Footer />
     </>
   );
