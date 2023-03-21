@@ -1,6 +1,6 @@
-import React from "react";
-import { Route, Redirect } from "react-router-dom";
-import { UserLayout } from "../components";
+import React from 'react';
+import { Route, Navigate } from 'react-router-dom';
+import { UserLayout } from '../components';
 
 const UserRoute = ({
   component: Component,
@@ -11,18 +11,13 @@ const UserRoute = ({
   return (
     <Route
       {...rest}
-      render={(props) =>
+      element={
         isAuthenticated ? (
-          <UserLayout
-            component={Component}
-            loaderCount={loaderCount}
-            {...props}
-          />
+          <UserLayout component={Component} loaderCount={loaderCount} />
         ) : (
-          <Redirect
+          <Navigate
             to={{
-              pathname: "/login",
-              state: { from: props.location },
+              pathname: '/login',
             }}
           />
         )
