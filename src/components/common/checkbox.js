@@ -3,7 +3,7 @@ import { Form } from 'react-bootstrap';
 import { Checkbox } from 'pretty-checkbox-react';
 import 'pretty-checkbox/src/pretty-checkbox.scss';
 
-const CustomCheckbox = ({
+function CustomCheckbox({
   controlId,
   label,
   error,
@@ -15,7 +15,7 @@ const CustomCheckbox = ({
   isControlled,
   onClick,
   dataFor,
-}) => {
+}) {
   return (
     <Form.Group controlId={controlId}>
       {isControlled ? (
@@ -32,7 +32,8 @@ const CustomCheckbox = ({
           variant="thick"
           name={name}
           data-tip
-          data-for={dataFor}>
+          data-for={dataFor}
+        >
           {label}
         </Checkbox>
       ) : (
@@ -45,7 +46,8 @@ const CustomCheckbox = ({
           ref={inputRef}
           name={name}
           data-tip={dataFor}
-          data-for={dataFor}>
+          data-for={dataFor}
+        >
           {label}
         </Checkbox>
       )}
@@ -54,6 +56,6 @@ const CustomCheckbox = ({
       )}
     </Form.Group>
   );
-};
+}
 
 export default CustomCheckbox;

@@ -3,7 +3,7 @@ import { Table } from 'react-bootstrap';
 import { Pagination } from '../index';
 import { messages } from '../../constants';
 
-const CustomTable = ({
+function CustomTable({
   tableClass,
   headers,
   children,
@@ -13,7 +13,7 @@ const CustomTable = ({
   countText,
   totalItemsCount,
   pageTextHidden,
-}) => {
+}) {
   return (
     <div>
       <div className="table-parent">
@@ -21,20 +21,20 @@ const CustomTable = ({
           <thead>
             <tr>
               {headers.map(
-                ({ icons, label, className, component, onHeaderClick }) => {
-                  return (
+                ({
+ icons, label, className, component, onHeaderClick 
+}) => (
                     <th className={className} onClick={onHeaderClick}>
                       <span>{component || label}</span>
-                      {icons &&
-                        icons.map((icon) => (
+                      {icons
+                        && icons.map((icon) => (
                           <i
                             className={icon.className}
                             onClick={icon.onClick}
                           />
                         ))}
                     </th>
-                  );
-                },
+                  ),
               )}
             </tr>
           </thead>
@@ -60,6 +60,6 @@ const CustomTable = ({
       )}
     </div>
   );
-};
+}
 
 export default CustomTable;

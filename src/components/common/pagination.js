@@ -2,7 +2,7 @@ import React from 'react';
 import ReactPagination from 'react-js-pagination';
 import { constants } from '../../constants';
 
-const Pagination = ({
+function Pagination({
   page,
   totalPages,
   totalItemCount,
@@ -10,14 +10,21 @@ const Pagination = ({
   pageText,
   color,
   pageTextHidden,
-}) => {
+}) {
   const { ofPlaceholder, pagePlaceholder } = constants.pagination;
   return (
     <div className={`pagination-row ${color}`}>
       {!pageTextHidden && (
         <p className="counter">
-          {pagePlaceholder} <span>{page}</span> {ofPlaceholder}{' '}
-          <span>{totalPages}</span> {pageText}
+          {pagePlaceholder} 
+{' '}
+<span>{page}</span> 
+{' '}
+{ofPlaceholder}
+{' '}
+          <span>{totalPages}</span> 
+{' '}
+{pageText}
         </p>
       )}
       <ReactPagination
@@ -33,6 +40,6 @@ const Pagination = ({
       />
     </div>
   );
-};
+}
 
 export default Pagination;

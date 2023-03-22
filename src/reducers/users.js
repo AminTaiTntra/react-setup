@@ -1,8 +1,8 @@
 import { SET_USERS } from '../actions/manageUsers';
 
 const usersReducer = (
-  users = { items: [], totalItemCount: 0, totalPages: 0 },
   action,
+  users = { items: [], totalItemCount: 0, totalPages: 0 },
 ) => {
   switch (action.type) {
     case SET_USERS: {

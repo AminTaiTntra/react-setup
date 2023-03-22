@@ -1,7 +1,7 @@
 import React from 'react';
 import { Col, Card } from 'react-bootstrap';
 
-const DetailCard = ({
+function DetailCard({
   value,
   label,
   imagePath,
@@ -11,7 +11,7 @@ const DetailCard = ({
   md,
   lg,
   xl,
-}) => {
+}) {
   return (
     <Col xs={xs || 4} sm={sm || 6} md={md || 4} lg={lg || 4} xl={xl || 3}>
       <Card>
@@ -27,6 +27,6 @@ const DetailCard = ({
       </Card>
     </Col>
   );
-};
+}
 
 export default DetailCard;

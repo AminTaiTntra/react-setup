@@ -1,6 +1,6 @@
 import { SET_PROFILE_DATA } from '../actions/profile';
 
-const profileReducer = (profile = {}, action) => {
+const profileReducer = (action, profile = {}) => {
   switch (action.type) {
     case SET_PROFILE_DATA: {
       return action.payload;

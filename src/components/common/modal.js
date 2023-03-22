@@ -2,16 +2,15 @@ import React, { useEffect } from 'react';
 import { Modal } from 'react-bootstrap';
 import Button from './button';
 
-const CustomModal = ({
+function CustomModal({
   children,
   title,
   isModalVisible,
   toggleModal,
   buttons,
   modalClass,
-}) => {
-  const toggleClass = () =>
-    document.documentElement.classList.toggle('modal-visible');
+}) {
+  const toggleClass = () => document.documentElement.classList.toggle('modal-visible');
   useEffect(() => {
     toggleClass();
     return toggleClass;
@@ -22,15 +21,15 @@ const CustomModal = ({
       className={modalClass}
       show={isModalVisible}
       onHide={toggleModal}
-      container={document.getElementById('root')}>
+      container={document.getElementById('root')}
+    >
       <Modal.Header closeButton>
         <Modal.Title>{title}</Modal.Title>
       </Modal.Header>
       <Modal.Body>{children}</Modal.Body>
       <Modal.Footer>
-        {buttons &&
-          buttons.map((btn) => {
-            return (
+        {buttons
+          && buttons.map((btn) => (
               <Button
                 disabled={btn.isDisabled}
                 isLoading={btn.isLoading}
@@ -39,11 +38,10 @@ const CustomModal = ({
                 className={btn.className}
                 variant={btn.variant || 'primary'}
               />
-            );
-          })}
+            ))}
       </Modal.Footer>
     </Modal>
   );
-};
+}
 
 export default CustomModal;

@@ -1,17 +1,17 @@
 import React from 'react';
-import { Modal, Input } from '../index';
 import { Form } from 'react-bootstrap';
-import { constants } from '../../constants';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
+import { constants } from '../../constants';
+import { Modal, Input } from '../index';
 import schema from '../../schema/changePassword';
 
-const ChangePasswordModal = ({
+function ChangePasswordModal({
   isModalVisible,
   toggleModal,
   onChangePassword,
   isLoading,
-}) => {
+}) {
   const {
     title,
     confirmPasswordPlaceholder,
@@ -20,7 +20,9 @@ const ChangePasswordModal = ({
     footerButtons,
   } = constants.profile.changePasswordModal;
 
-  const { register, handleSubmit, errors, formState } = useForm({
+  const {
+ register, handleSubmit, errors, formState 
+} = useForm({
     mode: 'onChange',
     reValidateMode: 'onChange',
     defaultValues: {
@@ -43,7 +45,7 @@ const ChangePasswordModal = ({
     {
       label: footerButtons.change,
       className: 'change-btn',
-      isLoading: isLoading,
+      isLoading,
       isDisabled: isLoading,
       onClick: handleSubmit(onChangePassword),
       variant: 'success',
@@ -56,7 +58,8 @@ const ChangePasswordModal = ({
       isModalVisible={isModalVisible}
       buttons={modalFooterButtons}
       toggleModal={toggleModal}
-      modalClass="change-password-modal">
+      modalClass="change-password-modal"
+    >
       <Form onSubmit={handleSubmit(onChangePassword)}>
         <Input
           controlId="formOldPassword"
@@ -65,7 +68,7 @@ const ChangePasswordModal = ({
           showError={touched && touched.oldPassword}
           inputRef={register}
           name="oldPassword"
-          isRequired={true}
+          isRequired
           label={oldPasswordPlaceholder}
         />
         <Input
@@ -75,7 +78,7 @@ const ChangePasswordModal = ({
           showError={touched && touched.newPassword}
           inputRef={register}
           name="newPassword"
-          isRequired={true}
+          isRequired
           label={newPasswordPlaceholder}
         />
         <Input
@@ -85,12 +88,12 @@ const ChangePasswordModal = ({
           showError={touched && touched.confirmPassword}
           inputRef={register}
           name="confirmPassword"
-          isRequired={true}
+          isRequired
           label={confirmPasswordPlaceholder}
         />
       </Form>
     </Modal>
   );
-};
+}
 
 export default ChangePasswordModal;

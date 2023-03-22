@@ -1,15 +1,17 @@
 import React, { useState } from 'react';
-import { Container, Row, Col, Card, Form } from 'react-bootstrap';
+import {
+ Container, Row, Col, Card, Form 
+} from 'react-bootstrap';
+import { useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
 import { Input, Button, ChangePasswordModal } from '../../components';
 import { changePassword } from '../../apis/profile';
 import { useStateCallback, saveToken, showToast } from '../../utility/common';
-import { useForm } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup';
 import schema from '../../schema/profile';
 import { constants } from '../../constants';
 import '../../styles/profile.scss';
 
-const Profile = ({ profile, updateProfileData }) => {
+function Profile({ profile, updateProfileData }) {
   const {
     buttons,
     emailPlaceholder,
@@ -25,7 +27,9 @@ const Profile = ({ profile, updateProfileData }) => {
 
   const toggleModal = () => setModalVisible(!isModalVisible);
 
-  const { register, handleSubmit, errors, formState } = useForm({
+  const {
+ register, handleSubmit, errors, formState 
+} = useForm({
     mode: 'onChange',
     reValidateMode: 'onChange',
     defaultValues: {
@@ -36,7 +40,7 @@ const Profile = ({ profile, updateProfileData }) => {
   });
   const onUpdateProfile = (data) => {
     setUpdateBtnLoading(true, () => {
-      let body = {
+      const body = {
         first_name: data.firstName,
         last_name: data.lastName,
       };
@@ -54,7 +58,7 @@ const Profile = ({ profile, updateProfileData }) => {
   };
 
   const onChangePassword = (data) => {
-    let body = {
+    const body = {
       old_password: data.oldPassword,
       new_password: data.newPassword,
     };
@@ -63,7 +67,7 @@ const Profile = ({ profile, updateProfileData }) => {
         .then((res) => {
           if (res.data.status) {
             showToast(res.data.message);
-            let newToken = 'Bearer ' + res.data.token.access_token;
+            const newToken = `Bearer ${res.data.token.access_token}`;
             saveToken(newToken);
             toggleModal();
           } else {
@@ -93,7 +97,7 @@ const Profile = ({ profile, updateProfileData }) => {
                       showError={touched && touched.firstName}
                       inputRef={register}
                       name="firstName"
-                      isRequired={true}
+                      isRequired
                       label={firstNamePlaceholder}
                     />
                   </Col>
@@ -105,7 +109,7 @@ const Profile = ({ profile, updateProfileData }) => {
                       showError={touched && touched.lastName}
                       inputRef={register}
                       name="lastName"
-                      isRequired={true}
+                      isRequired
                       label={lastNamePlaceholder}
                     />
                   </Col>
@@ -115,10 +119,10 @@ const Profile = ({ profile, updateProfileData }) => {
                       value={profile.email}
                       placeholder={emailPlaceholder}
                       name="email"
-                      isRequired={true}
+                      isRequired
                       label={emailPlaceholder}
-                      disabled={true}
-                      isControlled={true}
+                      disabled
+                      isControlled
                     />
                   </Col>
                 </Row>
@@ -155,6 +159,6 @@ const Profile = ({ profile, updateProfileData }) => {
       </Row>
     </Container>
   );
-};
+}
 
 export default Profile;

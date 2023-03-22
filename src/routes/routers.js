@@ -1,5 +1,7 @@
 import React from 'react';
-import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
+import {
+ BrowserRouter, Navigate, Route, Routes 
+} from 'react-router-dom';
 import Dashboard from '../pages/dashboard/dashboard';
 import Login from '../pages/login/login';
 import PublicRoute from './PublicRoute';
@@ -19,7 +21,7 @@ const routerMapper = [
   },
 ];
 
-const Routers = () => {
+function Routers() {
   const isAuthenticated = true;
 
   return (
@@ -29,11 +31,9 @@ const Routers = () => {
           path="/*"
           element={<Navigate to={isAuthenticated ? '/login' : '/login'} />}
         />
-        {routerMapper.map(({ component, path, routeComponent }) =>
-          routeComponent({ path, isAuthenticated, component }),
-        )}
+        {routerMapper.map(({ component, path, routeComponent }) => routeComponent({ path, isAuthenticated, component }),)}
       </Routes>
     </BrowserRouter>
   );
-};
+}
 export default Routers;

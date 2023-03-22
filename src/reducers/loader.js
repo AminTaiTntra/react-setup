@@ -1,6 +1,6 @@
-import { SET_LOADER_COUNT } from "../actions/loader";
+import { SET_LOADER_COUNT } from '../actions/loader';
 
-const loaderReducer = (loaderCount = 0, action) => {
+const loaderReducer = (action, loaderCount = 0) => {
   switch (action.type) {
     case SET_LOADER_COUNT: {
       return action.payload;

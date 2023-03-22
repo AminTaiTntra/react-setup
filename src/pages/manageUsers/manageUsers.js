@@ -5,7 +5,9 @@ import { showToast, useStateCallback } from '../../utility/common';
 import { constants } from '../../constants';
 import '../../styles/manageUsers.scss';
 
-const ManageUsers = ({ getUsers, users, history, profile }) => {
+function ManageUsers({
+ getUsers, users, history, profile 
+}) {
   useEffect(() => {
     getUsers({ search: '', page: 1, is_active: true }).then((res) => {
       if (!res.status) {
@@ -17,8 +19,7 @@ const ManageUsers = ({ getUsers, users, history, profile }) => {
   const [page, setPage] = useStateCallback(1);
   const [isButtonLoading, setButtonLoading] = useStateCallback(false);
   const onPageChange = (page) => {
-    setPage(page, () =>
-      getUsers({ search: searchValue, page: page, is_active: true }).then(
+    setPage(page, () => getUsers({ search: searchValue, page, is_active: true }).then(
         (res) => {
           if (res.status) {
             window.scrollTo({
@@ -27,8 +28,7 @@ const ManageUsers = ({ getUsers, users, history, profile }) => {
             });
           }
         },
-      ),
-    );
+      ),);
   };
   const onSearchValueChange = (e) => {
     setSearchValue(e.target.value);
@@ -73,7 +73,7 @@ const ManageUsers = ({ getUsers, users, history, profile }) => {
                 label={buttons.add}
                 onClick={onAddUser}
                 className="add-btn left"
-                prependIcon={true}
+                prependIcon
                 iconClass="fas fa-plus"
               />
               <Form>
@@ -81,7 +81,7 @@ const ManageUsers = ({ getUsers, users, history, profile }) => {
                   controlId="findUsers"
                   placeholder={searchText}
                   name="dataPoint"
-                  isControlled={true}
+                  isControlled
                   value={searchValue}
                   onChange={onSearchValueChange}
                   iconClass="fas fa-search"
@@ -89,7 +89,7 @@ const ManageUsers = ({ getUsers, users, history, profile }) => {
                   onButtonClick={onSearchUser}
                   isLoading={isButtonLoading}
                   buttonVariant="success"
-                  hasButton={true}
+                  hasButton
                   buttonType="submit"
                 />
               </Form>
@@ -101,11 +101,11 @@ const ManageUsers = ({ getUsers, users, history, profile }) => {
             pageCount={totalPages}
             totalItemsCount={totalItemCount}
             headers={headers}
-            onPageChange={onPageChange}>
-            {items &&
-              items.length > 0 &&
-              items.map((item, index) => {
-                return (
+            onPageChange={onPageChange}
+          >
+            {items
+              && items.length > 0
+              && items.map((item, index) => (
                   <tr>
                     <td>{(page - 1) * 10 + index + 1}</td>
                     <td>{item.first_name}</td>
@@ -129,13 +129,12 @@ const ManageUsers = ({ getUsers, users, history, profile }) => {
                       )}
                     </td>
                   </tr>
-                );
-              })}
+                ))}
           </Table>
         </Card.Body>
       </Card>
     </Container>
   );
-};
+}
 
 export default ManageUsers;

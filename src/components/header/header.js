@@ -12,7 +12,7 @@ import {
 import { getHeaderTitle, showToast } from '../../utility/common';
 import '../../styles/header.scss';
 
-const Header = ({
+function Header({
   profile,
   logout,
   setProfileData,
@@ -20,7 +20,7 @@ const Header = ({
   setSidebarCollapse,
   setSidebarVisibility,
   isVisible,
-}) => {
+}) {
   useEffect(() => {
     setProfileData().then((res) => {
       if (!res.status) showToast(res.error_message);
@@ -52,7 +52,7 @@ const Header = ({
       </Container>
     </Navbar>
   );
-};
+}
 
 const mapStateToProps = (state) => ({
   isCollapsed: state.sidebar.isCollapsed,

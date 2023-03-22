@@ -4,7 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import '../../styles/common/index.scss';
 import '../../styles/appStyle.scss';
 
-const UserLayout = (props) => {
+function UserLayout(props) {
   const { component: Component, ...rest } = props;
   return (
     <>
@@ -16,5 +16,5 @@ const UserLayout = (props) => {
       <Footer />
     </>
   );
-};
+}
 export default UserLayout;

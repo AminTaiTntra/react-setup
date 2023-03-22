@@ -1,5 +1,7 @@
 import React from 'react';
-import { Container, Row, Col, Card, Form } from 'react-bootstrap';
+import {
+ Container, Row, Col, Card, Form 
+} from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { Input, Checkbox, Button } from '../../components';
@@ -9,7 +11,7 @@ import { constants } from '../../constants';
 import { addNewUser } from '../../apis/manageUsers';
 import '../../styles/addUser.scss';
 
-const AddNewUser = () => {
+function AddNewUser() {
   const {
     title,
     buttons,
@@ -23,7 +25,9 @@ const AddNewUser = () => {
 
   const [isLoading, setLoading] = useStateCallback(false);
 
-  const { register, handleSubmit, errors, formState, reset } = useForm({
+  const {
+ register, handleSubmit, errors, formState, reset 
+} = useForm({
     mode: 'onChange',
     reValidateMode: 'onChange',
     defaultValues: {
@@ -76,7 +80,7 @@ const AddNewUser = () => {
                       showError={touched && touched.firstName}
                       inputRef={register}
                       name="firstName"
-                      isRequired={true}
+                      isRequired
                       label={firstNamePlaceholder}
                     />
                   </Col>
@@ -87,7 +91,7 @@ const AddNewUser = () => {
                       showError={touched && touched.lastName}
                       inputRef={register}
                       name="lastName"
-                      isRequired={true}
+                      isRequired
                       label={lastNamePlaceholder}
                     />
                   </Col>
@@ -98,7 +102,7 @@ const AddNewUser = () => {
                       showError={touched && touched.email}
                       inputRef={register}
                       name="email"
-                      isRequired={true}
+                      isRequired
                       label={emailPlaceholder}
                     />
                   </Col>
@@ -110,7 +114,7 @@ const AddNewUser = () => {
                       showError={touched && touched.password}
                       inputRef={register}
                       name="password"
-                      isRequired={true}
+                      isRequired
                       label={passwordPlaceholder}
                     />
                   </Col>
@@ -124,7 +128,7 @@ const AddNewUser = () => {
                       showError={touched && touched.confirmPassword}
                       inputRef={register}
                       name="confirmPassword"
-                      isRequired={true}
+                      isRequired
                       label={confirmPasswordPlaceholder}
                     />
                   </Col>
@@ -153,6 +157,6 @@ const AddNewUser = () => {
       </Row>
     </Container>
   );
-};
+}
 
 export default AddNewUser;

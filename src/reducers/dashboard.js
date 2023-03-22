@@ -1,12 +1,12 @@
 import { SET_DASHBOARD_DETAILS } from '../actions/dashboard';
 
 const dashboardReducer = (
+  action,
   dashboardDetails = {
     entities: 0,
     urls: 0,
     datapoints: 0,
   },
-  action,
 ) => {
   switch (action.type) {
     case SET_DASHBOARD_DETAILS: {

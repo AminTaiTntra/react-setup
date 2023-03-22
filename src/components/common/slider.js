@@ -3,8 +3,8 @@ import ReactSlider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 
-const Slider = ({ children }) => {
-  let settings = {
+function Slider({ children }) {
+  const settings = {
     dots: true,
     infinite: false,
     speed: 1000,
@@ -39,5 +39,5 @@ const Slider = ({ children }) => {
     ],
   };
   return <ReactSlider {...settings}>{children}</ReactSlider>;
-};
+}
 export default Slider;

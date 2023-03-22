@@ -1,15 +1,15 @@
 import { get, post, patch } from './client';
 
 const addNewUser = (body) => {
-  return post('user/add', body);
+   post('user/add', body);
 };
 
 const getUserList = (body) => {
-  return get('user/all', body);
+  get('user/all', body);
 };
 
 const editUser = (id, body) => {
-  return patch(`user/edit/${id}`, body);
+  patch(`user/edit/${id}`, body);
 };
 
 export { addNewUser, getUserList, editUser };

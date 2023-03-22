@@ -2,14 +2,14 @@ import React from 'react';
 import { Modal } from '../index';
 import { constants } from '../../constants';
 
-const ConfirmationModal = ({
+function ConfirmationModal({
   isModalVisible,
   toggleModal,
   onDelete,
   title,
   message,
   isLoading,
-}) => {
+}) {
   const { footerButtons } = constants.confirmationModal;
 
   const modalFooterButtons = [
@@ -24,7 +24,7 @@ const ConfirmationModal = ({
     {
       label: footerButtons.delete,
       className: 'delete-btn',
-      isLoading: isLoading,
+      isLoading,
       isDisabled: isLoading,
       onClick: onDelete,
       variant: 'danger',
@@ -36,10 +36,11 @@ const ConfirmationModal = ({
       isModalVisible={isModalVisible}
       buttons={modalFooterButtons}
       toggleModal={toggleModal}
-      modalClass="delete-notification-modal">
+      modalClass="delete-notification-modal"
+    >
       <p>{message}</p>
     </Modal>
   );
-};
+}
 
 export default ConfirmationModal;

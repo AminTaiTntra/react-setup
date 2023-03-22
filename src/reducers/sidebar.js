@@ -4,8 +4,8 @@ import {
 } from '../actions/sidebar';
 
 const sidebarReducer = (
-  sidebar = { isCollapsed: false, isVisible: false },
   action,
+  sidebar = { isCollapsed: false, isVisible: false },
 ) => {
   switch (action.type) {
     case SET_SIDEBAR_COLLAPSE: {

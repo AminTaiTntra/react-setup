@@ -2,7 +2,7 @@ import React from 'react';
 import { Form, InputGroup } from 'react-bootstrap';
 import Button from './button';
 
-const Input = ({
+function Input({
   controlId,
   label,
   type,
@@ -27,10 +27,12 @@ const Input = ({
   buttonType,
   prependText,
   hintText
-}) =>  (
-    <Form.Group
-      className={iconClass && !onButtonClick ? 'with-icon' : ''}
-      controlId={controlId}>
+}) {
+  return (
+<Form.Group
+  className={iconClass && !onButtonClick ? 'with-icon' : ''}
+  controlId={controlId}
+>
       {label && (
         <Form.Label>
           {label}
@@ -83,7 +85,7 @@ const Input = ({
         <Form.Text className="error-text">{error}</Form.Text>
       )}
     </Form.Group>
-  );
-
+);
+}
 
 export default Input;

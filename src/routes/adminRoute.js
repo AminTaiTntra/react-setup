@@ -2,18 +2,17 @@ import React from 'react';
 import { Route, Navigate } from 'react-router-dom';
 import { AdminLayout } from '../components';
 
-const AdminRoute = ({
+function AdminRoute({
   component: Component,
   loaderCount,
   isAuthenticated,
   isAdmin,
   ...rest
-}) => {
+}) {
   return (
     <Route
       {...rest}
-      render={(props) =>
-        isAuthenticated && isAdmin ? (
+      render={(props) => (isAuthenticated && isAdmin ? (
           <AdminLayout
             component={Component}
             loaderCount={loaderCount}
@@ -33,9 +32,8 @@ const AdminRoute = ({
               state: { from: props.location },
             }}
           />
-        )
-      }
+        ))}
     />
   );
-};
+}
 export default AdminRoute;

@@ -1,15 +1,17 @@
 import React from 'react';
-import { Container, Row, Col, Card, Form } from 'react-bootstrap';
-import { Input, Checkbox, Button } from '../../components';
-import { showToast, useStateCallback } from '../../utility/common';
+import {
+ Container, Row, Col, Card, Form 
+} from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
+import { Input, Checkbox, Button } from '../../components';
+import { showToast, useStateCallback } from '../../utility/common';
 import schema from '../../schema/editUser';
 import { constants } from '../../constants';
 import { editUser } from '../../apis/manageUsers';
 import '../../styles/editUser.scss';
 
-const EditUser = ({ history }) => {
+function EditUser({ history }) {
   const {
     title,
     buttons,
@@ -21,9 +23,13 @@ const EditUser = ({ history }) => {
 
   const [isLoading, setLoading] = useStateCallback(false);
 
-  const { first_name, last_name, email, id, is_admin } = history.location.state;
+  const {
+ first_name, last_name, email, id, is_admin 
+} = history.location.state;
 
-  const { register, handleSubmit, errors, formState } = useForm({
+  const {
+ register, handleSubmit, errors, formState 
+} = useForm({
     mode: 'onChange',
     reValidateMode: 'onChange',
     defaultValues: {
@@ -70,7 +76,7 @@ const EditUser = ({ history }) => {
                       showError={touched && touched.firstName}
                       inputRef={register}
                       name="firstName"
-                      isRequired={true}
+                      isRequired
                       label={firstNamePlaceholder}
                     />
                   </Col>
@@ -81,7 +87,7 @@ const EditUser = ({ history }) => {
                       showError={touched && touched.lastName}
                       inputRef={register}
                       name="lastName"
-                      isRequired={true}
+                      isRequired
                       label={lastNamePlaceholder}
                     />
                   </Col>
@@ -90,9 +96,9 @@ const EditUser = ({ history }) => {
                       controlId="formEmail"
                       name="email"
                       label={emailPlaceholder}
-                      isControlled={true}
+                      isControlled
                       value={email}
-                      disabled={true}
+                      disabled
                     />
                   </Col>
                   <Col md={6} className="inline-checkbox">
@@ -120,6 +126,6 @@ const EditUser = ({ history }) => {
       </Row>
     </Container>
   );
-};
+}
 
 export default EditUser;

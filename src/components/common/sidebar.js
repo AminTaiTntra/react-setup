@@ -16,12 +16,12 @@ import { constants } from '../../constants';
 import 'react-pro-sidebar/dist/css/styles.css';
 import '../../styles/sidebar.scss';
 
-const Sidebar = ({ 
+function Sidebar({ 
   isCollapsed, 
   profile, 
   isVisible, 
   setSidebarVisibility 
-}) => {
+}) {
   const location = useLocation();
   const sidebarMenuClasses = getSidebarMenuClasses(location);
   const closeSidebar = () => setSidebarVisibility(false);
@@ -60,12 +60,12 @@ const Sidebar = ({
             </NavLink>
           </MenuItem>
         ) : (
-          <></>
+          null
         )}
       </Menu>
     </ProSidebar>
   );
-};
+}
 
 const mapStateToProps = (state) => ({
   isCollapsed: state.sidebar.isCollapsed,

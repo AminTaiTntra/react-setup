@@ -36,12 +36,14 @@ const ScrollToTop = (props) => {
   return props.children;
 };
 
-const Routes = ({ token, loaderCount, setReduxLoaderCount, profile }) => {
+function Routes({
+ token, loaderCount, setReduxLoaderCount, profile 
+}) {
   useEffect(() => {
     loaderCount > 0 && setReduxLoaderCount(0);
   }, []);
-  let isAuthenticated = token;
-  let isAdmin = profile && profile.is_admin;
+  const isAuthenticated = token;
+  const isAdmin = profile && profile.is_admin;
   return (
     <Router>
       {/* <Suspense fallback={<FullScreenLoader />}> */}
@@ -57,13 +59,11 @@ const Routes = ({ token, loaderCount, setReduxLoaderCount, profile }) => {
           <Route
             exact
             path="/login"
-            render={(props) =>
-              isAuthenticated ? (
+            render={(props) => (isAuthenticated ? (
                 <Navigate to="/dashboard" />
               ) : (
                 <Login {...props} />
-              )
-            }
+              ))}
           />
           <UserRoute
             isAuthenticated={isAuthenticated}
@@ -114,7 +114,7 @@ const Routes = ({ token, loaderCount, setReduxLoaderCount, profile }) => {
       />
     </Router>
   );
-};
+}
 
 const mapStateToProps = (state) => ({
   token: state.token,

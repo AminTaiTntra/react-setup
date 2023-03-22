@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button, Spinner } from 'react-bootstrap';
 
-const CustomButton = ({
+function CustomButton({
   label,
   disabled,
   isLoading,
@@ -11,14 +11,15 @@ const CustomButton = ({
   variant,
   iconClass,
   prependIcon,
-}) => {
+}) {
   return (
     <Button
       variant={variant || 'primary'}
       onClick={onClick}
       disabled={disabled}
       className={className}
-      type={type}>
+      type={type}
+    >
       {isLoading ? (
         <>
           <Spinner
@@ -39,6 +40,6 @@ const CustomButton = ({
       )}
     </Button>
   );
-};
+}
 
 export default CustomButton;

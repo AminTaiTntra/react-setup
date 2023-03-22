@@ -110,9 +110,9 @@ const getSidebarMenuClasses = (path) => {
   if (pathName.match('/dashboard')) {
     sidebarMenuClasses.dashboard = 'active';
   } else if (
-    path.match(/^\/add-new-user/) ||
-    path.match(/^\/manage-users/) ||
-    path.match(/^\/edit-user/)
+    path.match(/^\/add-new-user/)
+    || path.match(/^\/manage-users/)
+    || path.match(/^\/edit-user/)
   ) {
     sidebarMenuClasses.manageUsers = 'active';
   }

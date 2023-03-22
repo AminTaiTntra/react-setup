@@ -22,8 +22,9 @@ import {
 // import { sortingMethodIconMapper } from "../../utility/mapper";
 import '../../styles/dashboard.scss';
 
-const Dashboard = () => (
-  <Container className="dashboard">
+function Dashboard() {
+  return (
+<Container className="dashboard">
     {/* <Row className="small-data-card-info">
     <DetailCard
       value={entities}
@@ -248,6 +249,7 @@ const Dashboard = () => (
   </Tabs> */}
   </Container>
 );
+}
 
 // useEffect(() => {
 //   setDashboardData();

@@ -1,18 +1,75 @@
-[1mdiff --git a/src/components/common/sidebar.js b/src/components/common/sidebar.js[m
-[1mindex 2d78c98..d221605 100644[m
-[1m--- a/src/components/common/sidebar.js[m
-[1m+++ b/src/components/common/sidebar.js[m
-[36m@@ -16,7 +16,12 @@[m [mimport { constants } from '../../constants';[m
- import 'react-pro-sidebar/dist/css/styles.css';[m
- import '../../styles/sidebar.scss';[m
- [m
-[31m-const Sidebar = ({ isCollapsed, profile, isVisible, setSidebarVisibility }) => {[m
-[32m+[m[32mconst Sidebar = ({[m[41m [m
-[32m+[m[32m  isCollapsed,[m[41m [m
-[32m+[m[32m  profile,[m[41m [m
-[32m+[m[32m  isVisible,[m[41m [m
-[32m+[m[32m  setSidebarVisibility[m[41m [m
-[32m+[m[32m}) => {[m
-   const location = useLocation();[m
-   const sidebarMenuClasses = getSidebarMenuClasses(location);[m
-   const closeSidebar = () => setSidebarVisibility(false);[m
+import React from 'react';
+import { connect } from 'react-redux';
+import { NavLink } from 'react-router-dom';
+import {
+ ProSidebar, Menu, MenuItem, SidebarHeader 
+} from 'react-pro-sidebar';
+import {
+  setSidebarCollapse,
+  setSidebarVisibility,
+} from '../../actions/sidebar';
+import { getSidebarMenuClasses } from '../../utility/common';
+import { constants } from '../../constants';
+import 'react-pro-sidebar/dist/css/styles.css';
+import '../../styles/sidebar.scss';
+
+function Sidebar({
+  isCollapsed,
+  profile,
+  isVisible,
+  setSidebarVisibility,
+  location,
+}) {
+  const sidebarMenuClasses = getSidebarMenuClasses(location.pathname);
+  const closeSidebar = () => setSidebarVisibility(false);
+  const { manageUsersPlaceholder, dashboardPlaceholder } = constants.sidebar;
+  return (
+    <ProSidebar
+      collapsed={isCollapsed}
+      breakPoint="lg"
+      toggled={isVisible}
+      onToggle={setSidebarVisibility}
+    >
+      <SidebarHeader>
+        {isCollapsed ? (
+          <img alt="Icon logo" src="/images/icon-logo.png" />
+        ) : (
+          <img alt="Logo" src="/images/white-logo.png" />
+        )}
+        <i className="fas fa-times close-sidebar" onClick={closeSidebar} />
+      </SidebarHeader>
+      <Menu iconShape="round">
+        <MenuItem
+          className={sidebarMenuClasses.dashboard}
+          icon={<i className="fa fa-tachometer-alt" />}
+        >
+          <NavLink onClick={closeSidebar} to="/dashboard">
+            {dashboardPlaceholder}
+          </NavLink>
+        </MenuItem>
+        {profile.is_admin ? (
+          <MenuItem
+            className={sidebarMenuClasses.manageUsers}
+            icon={<i className="fa fa-user-plus" />}
+          >
+            <NavLink onClick={closeSidebar} to="/manage-users">
+              {manageUsersPlaceholder}
+            </NavLink>
+          </MenuItem>
+        ) : (
+          <></>
+        )}
+      </Menu>
+    </ProSidebar>
+  );
+}
+
+const mapStateToProps = (state) => ({
+  isCollapsed: state.sidebar.isCollapsed,
+  isVisible: state.sidebar.isVisible,
+  profile: state.profile,
+});
+
+const mapDispatchToProps = { setSidebarCollapse, setSidebarVisibility };
+
+export default connect(mapStateToProps, mapDispatchToProps)(Sidebar);

@@ -3,7 +3,7 @@ import { Dropdown } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import { constants } from '../../constants';
 
-const HeaderDropdown = ({ profile, logout }) => {
+function HeaderDropdown({ profile, logout }) {
   const { profilePlaceholder, logOutPlaceholder } = constants.header;
   const history = useNavigate();
   const navigateToProfilePage = () => history.push('/profile');
@@ -12,9 +12,9 @@ const HeaderDropdown = ({ profile, logout }) => {
       <Dropdown.Toggle variant="default" id="dropdown-basic">
         <i className="fas fa-user-circle" />
         <span className="user-name">
-          {profile &&
-            profile.first_name &&
-            profile.first_name + profile.last_name}
+          {profile
+            && profile.first_name
+            && profile.first_name + profile.last_name}
         </span>
       </Dropdown.Toggle>
 
@@ -30,6 +30,6 @@ const HeaderDropdown = ({ profile, logout }) => {
       </Dropdown.Menu>
     </Dropdown>
   );
-};
+}
 
 export default HeaderDropdown;

@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Form, Container, Alert } from 'react-bootstrap';
-import { Input, Button } from '../../components';
-import { showToast, useStateCallback } from '../../utility/common';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
+import { Input, Button } from '../../components';
+import { showToast, useStateCallback } from '../../utility/common';
 import schema from '../../schema/login';
 import { constants, messages } from '../../constants';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -11,7 +11,7 @@ import '../../styles/common/form.scss';
 import '../../styles/common/button.scss';
 import '../../styles/login.scss';
 
-const Login = ({ setUserToken }) => {
+function Login({ setUserToken }) {
   useEffect(() => {
     if (localStorage.getItem('SHOW_TOAST')) {
       localStorage.removeItem('SHOW_TOAST');
@@ -28,7 +28,9 @@ const Login = ({ setUserToken }) => {
   const [isLoading, setLoading] = useStateCallback(false);
   const [errorMessage, setErrorMessage] = useState('');
 
-  const { register, handleSubmit, errors, formState } = useForm({
+  const {
+ register, handleSubmit, errors, formState 
+} = useForm({
     mode: 'onChange',
     reValidateMode: 'onChange',
     defaultValues: {
@@ -95,6 +97,6 @@ const Login = ({ setUserToken }) => {
       </Container>
     </div>
   );
-};
+}
 
 export default Login;

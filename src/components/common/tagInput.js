@@ -4,7 +4,7 @@ import { AsyncTypeahead } from 'react-bootstrap-typeahead';
 import { messages } from '../../constants';
 import 'react-bootstrap-typeahead/css/Typeahead.css';
 
-const TagInput = ({
+function TagInput({
   label,
   placeholder,
   error,
@@ -18,7 +18,7 @@ const TagInput = ({
   selected,
   inputRef,
   name,
-}) => {
+}) {
   return (
     <Form.Group>
       {label && (
@@ -51,6 +51,6 @@ const TagInput = ({
       )}
     </Form.Group>
   );
-};
+}
 
 export default TagInput;
