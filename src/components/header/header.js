@@ -30,7 +30,7 @@ const Header = ({
   const location = useLocation();
   const toggleCollapse = () => setSidebarCollapse(!isCollapsed);
   const toggleVisibility = () => setSidebarVisibility(!isVisible);
-  let headerTitle = getHeaderTitle(location.pathname);
+  const headerTitle = getHeaderTitle(location.pathname);
   return (
     <Navbar fixed="top">
       <Container className="justify-content-between">

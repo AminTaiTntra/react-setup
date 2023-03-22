@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Form, Container, Alert } from 'react-bootstrap';
-import { Input, Button } from '../../components';
-import { showToast, useStateCallback } from '../../utility/common';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
+import { Input, Button } from '../../components';
+import { showToast, useStateCallback } from '../../utility/common';
 import schema from '../../schema/login';
 import { constants, messages } from '../../constants';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -18,17 +18,22 @@ const Login = ({ setUserToken }) => {
       showToast(messages.sessionExpired);
     }
   }, []);
-  const {
-    title,
-    buttons,
-    emailPlaceholder,
-    passwordPlaceholder,
+  const { 
+    title, 
+    buttons, 
+    emailPlaceholder, 
+    passwordPlaceholder 
   } = constants.loginPage;
 
   const [isLoading, setLoading] = useStateCallback(false);
   const [errorMessage, setErrorMessage] = useState('');
 
-  const { register, handleSubmit, errors, formState } = useForm({
+  const { 
+    // register, 
+    handleSubmit, 
+    // errors, 
+    // formState 
+  } = useForm({
     mode: 'onChange',
     reValidateMode: 'onChange',
     defaultValues: {
@@ -50,7 +55,7 @@ const Login = ({ setUserToken }) => {
         .catch(() => setLoading(false));
     });
   };
-  const { touched } = formState;
+  // const { touched } = formState;
 
   return (
     <div className="min-vh-100 d-flex justify-content-center align-items-center login-body">
@@ -65,21 +70,19 @@ const Login = ({ setUserToken }) => {
             <Input
               controlId="formEmail"
               placeholder={emailPlaceholder}
-              error={errors.email && errors.email.message}
-              showError={touched && touched.email}
-              inputRef={register}
+              // error={errors.email && errors.email.message}
+              // showError={touched && touched.email}
+              // inputRef={register}
               name="email"
-              iconClass="fas fa-envelope"
             />
             <Input
               controlId="formPassword"
               type="password"
               placeholder={passwordPlaceholder}
-              error={errors.password && errors.password.message}
-              showError={touched && touched.password}
-              inputRef={register}
+              // error={errors.password && errors.password.message}
+              // showError={touched && touched.password}
+              // inputRef={register}
               name="password"
-              iconClass="fas fa-lock"
             />
             <div className="text-center">
               <Button
