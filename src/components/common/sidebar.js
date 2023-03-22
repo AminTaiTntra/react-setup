@@ -16,7 +16,12 @@ import { constants } from '../../constants';
 import 'react-pro-sidebar/dist/css/styles.css';
 import '../../styles/sidebar.scss';
 
-const Sidebar = ({ isCollapsed, profile, isVisible, setSidebarVisibility }) => {
+const Sidebar = ({ 
+  isCollapsed, 
+  profile, 
+  isVisible, 
+  setSidebarVisibility 
+}) => {
   const location = useLocation();
   const sidebarMenuClasses = getSidebarMenuClasses(location);
   const closeSidebar = () => setSidebarVisibility(false);
