@@ -41,7 +41,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "lint": "eslint src/**/**/*.js --fix-dry-run",
+    "lint": "eslint \"{**/*,*}.{js,ts,jsx,tsx}\"",
     "pretty": "prettier \"src/**/*.js\"",
     "staging": "REACT_APP_ENV=staging npm start",
     "production": "REACT_APP_ENV=production npm start",
