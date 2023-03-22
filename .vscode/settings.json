@@ -1,0 +1,51 @@
+{
+ "workbench.colorCustomizations": {
+  "activityBar.activeBackground": "#2f6ea8",
+  "activityBar.activeBorder": "#72bafd",
+  "activityBar.background": "#2f6ea8",
+  "activityBar.border": "#72bafd",
+  "activityBar.foreground": "#e7e7e7",
+  "activityBar.inactiveForeground": "#e7e7e799",
+  "activityBarBadge.background": "#2f6ea8",
+  "activityBarBadge.foreground": "#e7e7e7",
+  "statusBar.background": "#063764",
+  "statusBar.border": "#9da2e7",
+  "statusBar.foreground": "#e7e7e7",
+  "statusBarItem.hoverBackground": "#212557"
+ },
+ "editor.autoIndent": "full",
+ "editor.codeActionsOnSave": {
+  "source.organizeImports": true
+ },
+ "editor.cursorBlinking": "solid",
+ "editor.cursorSmoothCaretAnimation": "on",
+ "editor.cursorStyle": "line",
+ "editor.fontLigatures": true,
+ "editor.formatOnType": false,
+ "editor.letterSpacing": 0.5,
+ "editor.lineHeight": 26,
+ "editor.minimap.enabled": false,
+ "editor.renderWhitespace": "none",
+ "editor.tabCompletion": "off",
+ "editor.tabSize": 1,
+ "editor.wordWrap": "off",
+ "files.autoSave": "afterDelay",
+ "files.autoSaveDelay": 5000,
+ "files.defaultLanguage": "javascriptreact",
+ "files.trimTrailingWhitespace": true,
+ "javascript.format.semicolons": "insert",
+ "javascript.updateImportsOnFileMove.enabled": "always",
+ "javascript.preferences.quoteStyle": "single",
+ "editor.formatOnSave": true,
+ "javascript.referencesCodeLens.enabled": true,
+ "git.enableSmartCommit": true,
+ "editor.fontFamily": " 'monospace', monospace, 'Droid Sans Fallback'",
+ "javascript.suggest.completeFunctionCalls": true,
+ "[json]": {
+  "editor.defaultFormatter": "vscode.json-language-features"
+ },
+ "[javascript]": {
+  "editor.maxTokenizationLineLength": 2500,
+  "editor.trimAutoWhitespace": true
+ }
+}
