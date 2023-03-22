@@ -1,6 +1,6 @@
 import axios from 'axios';
-import { messages } from '../constants';
-import { getToken, getBaseURL, showToast } from '../utility/common';
+// import { messages } from '../constants';
+import { getToken, getBaseURL } from '../utility/common';
 
 const client = axios.create({
   baseURL: getBaseURL(),
@@ -10,8 +10,7 @@ const client = axios.create({
   },
 });
 
-const get = (url, body, headers = {}) =>
-  client.get(url, { params: body, headers: headers });
+const get = (url, body, headers = {}) => client.get(url, { params: body, headers });
 
 const post = (url, body, headers = {}) => client.post(url, body, { headers });
 
@@ -27,19 +26,25 @@ client.interceptors.request.use(async (config) => {
 });
 
 client.interceptors.response.use(
-  function (response) {
-    if (response.data && response.data.data && response.data.data.logout) {
+  (response) => {
+    if (response?.data?.logout) {
       localStorage.removeItem('TOKEN');
-      localStorage.setItem('SHOW_TOAST', true);
     }
     return response;
   },
-  function (error) {
-    showToast(messages.tryAgain);
-    return Promise.reject(error);
+  (error) => {
+    if (error) {
+      return Promise.reject(error);
+    }
   },
 );
 
-export { get, post, put, del, patch };
+export { 
+  get,
+  post, 
+  put, 
+  del, 
+  patch 
+};
 
 export default client;

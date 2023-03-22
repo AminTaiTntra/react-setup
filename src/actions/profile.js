@@ -3,7 +3,7 @@ import { getProfile, updateProfile } from '../apis/profile';
 const SET_PROFILE_DATA = 'SET_PROFILE_DATA';
 
 const setProfileData = () => (dispatch) => {
-  return getProfile().then((res) => {
+   getProfile().then((res) => {
     if (res.data.status) {
       dispatch(profileDataAction(res.data.data.user));
     }
@@ -12,7 +12,7 @@ const setProfileData = () => (dispatch) => {
 };
 
 const updateProfileData = (id, body) => (dispatch) => {
-  return updateProfile(id, body).then((res) => {
+  updateProfile(id, body).then((res) => {
     if (res.data.status) {
       dispatch(profileDataAction(res.data.data.user));
     }

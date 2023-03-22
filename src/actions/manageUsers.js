@@ -1,7 +1,7 @@
-import * as apis from "../apis/manageUsers";
-import { incrementLoaderCount, decrementLoaderCount } from "./loader";
+import * as apis from '../apis/manageUsers';
+import { incrementLoaderCount, decrementLoaderCount } from './loader';
 
-const SET_USERS = "SET_USERS";
+const SET_USERS = 'SET_USERS';
 
 const getUsers = (body) => (dispatch) => {
   dispatch(incrementLoaderCount());
@@ -9,7 +9,7 @@ const getUsers = (body) => (dispatch) => {
     .getUserList(body)
     .then((res) => {
       if (res.data.status) {
-        let users = {
+        const users = {
           items: (res.data.data && res.data.data.users) || [],
           totalItemCount:
             (res.data.pagination && res.data.pagination.count) || 0,

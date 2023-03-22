@@ -27,8 +27,7 @@ const Input = ({
   buttonType,
   prependText,
   hintText
-}) => {
-  return (
+}) =>  (
     <Form.Group
       className={iconClass && !onButtonClick ? 'with-icon' : ''}
       controlId={controlId}>
@@ -85,6 +84,6 @@ const Input = ({
       )}
     </Form.Group>
   );
-};
+
 
 export default Input;
