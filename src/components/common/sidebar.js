@@ -1,7 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { NavLink, useLocation } from 'react-router-dom';
-import { ProSidebar, Menu, MenuItem, SidebarHeader } from 'react-pro-sidebar';
+import { 
+  ProSidebar, 
+  Menu, 
+  MenuItem, 
+  SidebarHeader 
+} from 'react-pro-sidebar';
 import {
   setSidebarCollapse,
   setSidebarVisibility,
