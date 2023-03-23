@@ -11,6 +11,8 @@ import {
 } from '../../actions/sidebar';
 import { getHeaderTitle, showToast } from '../../utility/common';
 import '../../styles/header.scss';
+import { useTranslation } from 'react-i18next';
+import LanguageDropDown from './languageDropdown';
 
 const Header = ({
   profile,
@@ -21,6 +23,7 @@ const Header = ({
   setSidebarVisibility,
   isVisible,
 }) => {
+  const { t } = useTranslation();
   useEffect(() => {
     setProfileData().then((res) => {
       if (!res.status) showToast(res.error_message);
@@ -31,6 +34,7 @@ const Header = ({
   const toggleCollapse = () => setSidebarCollapse(!isCollapsed);
   const toggleVisibility = () => setSidebarVisibility(!isVisible);
   const headerTitle = getHeaderTitle(location.pathname);
+
   return (
     <Navbar fixed="top">
       <Container className="justify-content-between">
@@ -41,7 +45,8 @@ const Header = ({
           onClick={toggleCollapse}
         />
         <div className="page-title">
-          <h1>{headerTitle}</h1>
+          {console.log("Dashboard",t('Dashboard') )}
+          <h1>{t("Dashboard.title")}</h1> 
         </div>
         <div className="navigation-items">
           <HeaderDropdown profile={profile} logout={logout} />
@@ -49,6 +54,7 @@ const Header = ({
             className="fas fa-bars collapse-sidebar-btn"
             onClick={toggleVisibility}
           />
+          <LanguageDropDown />
         </div>
       </Container>
     </Navbar>

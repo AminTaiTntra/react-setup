@@ -10,6 +10,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import '../../styles/common/form.scss';
 import '../../styles/common/button.scss';
 import '../../styles/login.scss';
+import { useTranslation } from 'react-i18next';
 
 const Login = ({ setUserToken }) => {
   useEffect(() => {
@@ -27,7 +28,7 @@ const Login = ({ setUserToken }) => {
 
   const [isLoading, setLoading] = useStateCallback(false);
   const [errorMessage, setErrorMessage] = useState('');
-
+  const { t } = useTranslation()
   const { 
     // register, 
     handleSubmit, 
@@ -69,7 +70,7 @@ const Login = ({ setUserToken }) => {
           <Form onSubmit={handleSubmit(onSubmit)}>
             <Input
               controlId="formEmail"
-              placeholder={emailPlaceholder}
+              placeholder={t('login.email')}
               // error={errors.email && errors.email.message}
               // showError={touched && touched.email}
               // inputRef={register}
@@ -78,7 +79,7 @@ const Login = ({ setUserToken }) => {
             <Input
               controlId="formPassword"
               type="password"
-              placeholder={passwordPlaceholder}
+              placeholder={t('login.password')}
               // error={errors.password && errors.password.message}
               // showError={touched && touched.password}
               // inputRef={register}
