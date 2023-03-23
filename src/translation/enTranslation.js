@@ -1,11 +1,11 @@
 export const enTranslation = {
-  Welcome: 'Welcome English Dashboard',
+  Welcome: 'Welcome to Dashboard',
   Dashboard: {
-    title: 'DashBoard English',
+    title: 'DashBoard',
   },
   login :{
-    email : "en email",
-    password: "en password"
+    email : "Email",
+    password: "Password"
   }
 };
 

@@ -1,11 +1,11 @@
 export const frTranslation = {
-  Welcome: 'Welcome french Dashboard ',
+  Welcome: 'Bienvenue sur le tableau de bord',
   Dashboard: {
-    title: 'DashBoard french',
+    title: 'Tableau de bord',
   },
   login:{
-    email : "fr email",
-    password : "fr password"
+    email : "E-mail",
+    password : "Mot de passe"
   }
 };
 
