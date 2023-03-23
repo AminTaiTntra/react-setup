@@ -11,12 +11,17 @@ import PublicRoute from './publicRoute';
 
 import UserRoute from './userRoute';
 import Profile from '../pages/profile';
+import Signup from '../pages/signup/signup';
 
 const routerMapper = [
   {
     path: '/login',
-    component: Login,
+    component: Login, 
     routeComponent: PublicRoute,
+  },{
+      path: '/signup',
+      component: Signup,
+      routeComponent: PublicRoute,
   },
   {
     path: '/dashboard',

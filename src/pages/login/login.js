@@ -10,6 +10,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import '../../styles/common/form.scss';
 import '../../styles/common/button.scss';
 import '../../styles/login.scss';
+import { Link } from 'react-router-dom';
 
 const Login = ({ setUserToken }) => {
   useEffect(() => {
@@ -29,7 +30,7 @@ const Login = ({ setUserToken }) => {
   const [errorMessage, setErrorMessage] = useState('');
 
   const { 
-    // register, 
+    register, 
     handleSubmit, 
     // errors, 
     // formState 
@@ -72,7 +73,7 @@ const Login = ({ setUserToken }) => {
               placeholder={emailPlaceholder}
               // error={errors.email && errors.email.message}
               // showError={touched && touched.email}
-              // inputRef={register}
+              inputRef={{...register("name", { required: true })}}
               name="email"
             />
             <Input
@@ -81,9 +82,12 @@ const Login = ({ setUserToken }) => {
               placeholder={passwordPlaceholder}
               // error={errors.password && errors.password.message}
               // showError={touched && touched.password}
-              // inputRef={register}
+              inputRef={register}
               name="password"
             />
+            <div>Don't have an account?
+              <Link to={'/signup'}>sign Up</Link>
+            </div>
             <div className="text-center">
               <Button
                 disabled={isLoading}
