@@ -11,7 +11,7 @@ import PublicRoute from './publicRoute';
 
 import UserRoute from './userRoute';
 import Profile from '../pages/profile';
-import Signup from '../pages/signup/signup';
+import Signup from '../pages/signup';
 
 const routerMapper = [
   {
