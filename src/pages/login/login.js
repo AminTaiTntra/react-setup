@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Form, Container, Alert } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
+import { useTranslation } from 'react-i18next';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { Input, Button } from '../../components';
 import { showToast, useStateCallback } from '../../utility/common';
@@ -28,7 +29,7 @@ const Login = ({ setUserToken }) => {
 
   const [isLoading, setLoading] = useStateCallback(false);
   const [errorMessage, setErrorMessage] = useState('');
-
+  const { t } = useTranslation()
   const { 
     register, 
     handleSubmit, 
@@ -70,7 +71,7 @@ const Login = ({ setUserToken }) => {
           <Form onSubmit={handleSubmit(onSubmit)}>
             <Input
               controlId="formEmail"
-              placeholder={emailPlaceholder}
+              placeholder={t('login.email')}
               // error={errors.email && errors.email.message}
               // showError={touched && touched.email}
               inputRef={{...register("name", { required: true })}}
@@ -79,7 +80,7 @@ const Login = ({ setUserToken }) => {
             <Input
               controlId="formPassword"
               type="password"
-              placeholder={passwordPlaceholder}
+              placeholder={t('login.password')}
               // error={errors.password && errors.password.message}
               // showError={touched && touched.password}
               inputRef={register}
