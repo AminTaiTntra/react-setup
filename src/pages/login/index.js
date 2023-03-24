@@ -1,9 +1,16 @@
-import Login from './login';
-import { connect } from 'react-redux';
-import { setUserToken } from '../../actions/login';
+import { Container } from 'react-bootstrap';
+import GetLoginPageInformation from './loginInfo';
 
-const mapStateToProps = () => ({});
+const Login = () => {
+  return (
+    <div className="min-vh-100 d-flex justify-content-center align-items-center login-body">
+      <Container className="d-flex justify-content-center align-items-center">
+        <div className="login-box">
+          <GetLoginPageInformation />
+        </div>
+      </Container>
+    </div>
+  );
+};
 
-const mapDispatchToProps = { setUserToken };
-
-export default connect(mapStateToProps, mapDispatchToProps)(Login);
+export default Login;
