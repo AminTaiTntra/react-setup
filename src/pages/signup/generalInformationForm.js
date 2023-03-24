@@ -31,7 +31,7 @@ const GeneralInformationForm = () => {
         onSubmit={(values, { setSubmitting }) => {
           console.log('values',values);
         }}
-        vali      dateOnChange
+        validateOnChange
         validateOnBlur
       >
         {
@@ -46,7 +46,7 @@ const GeneralInformationForm = () => {
             setFieldValue,
             setValues
           }) => {
-            console.log('errors',values);
+            console.log('errors',errors);
             return (
               <form onSubmit={handleSubmit}>
                 <Row className="mb-3">

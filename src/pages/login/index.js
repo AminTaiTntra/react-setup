@@ -1,5 +1,5 @@
 import { Container } from 'react-bootstrap';
-import GetLoginPageInformation from './loginInfo';
+import GetLoginPageInformation from './login';
 
 const Login = () => {
   return (
