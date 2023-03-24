@@ -134,7 +134,7 @@ const Profile = ({ profile, updateProfileData }) => {
                       />
                     </Col>
                     <Col sm={6} className="change-password">
-                      <a href="javascript:;" onClick={toggleModal}>
+                      <a href="#/" onClick={toggleModal}>
                         {changePasswordPlaceholder}
                       </a>
                     </Col>

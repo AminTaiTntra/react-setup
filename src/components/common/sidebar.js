@@ -1,23 +1,18 @@
-import React from "react";
-import { connect } from "react-redux";
-import { NavLink } from "react-router-dom";
-import { ProSidebar, Menu, MenuItem, SidebarHeader } from "react-pro-sidebar";
+import React from 'react';
+import { connect } from 'react-redux';
+import { NavLink, useLocation } from 'react-router-dom';
+import { ProSidebar, Menu, MenuItem, SidebarHeader } from 'react-pro-sidebar';
 import {
   setSidebarCollapse,
   setSidebarVisibility,
-} from "../../actions/sidebar";
-import { getSidebarMenuClasses } from "../../utility/common";
-import { constants } from "../../constants";
-import "react-pro-sidebar/dist/css/styles.css";
-import "../../styles/sidebar.scss";
+} from '../../actions/sidebar';
+import { getSidebarMenuClasses } from '../../utility/common';
+import { constants } from '../../constants';
+import 'react-pro-sidebar/dist/css/styles.css';
+import '../../styles/sidebar.scss';
 
-const Sidebar = ({
-  isCollapsed,
-  profile,
-  isVisible,
-  setSidebarVisibility,
-  location,
-}) => {
+const Sidebar = ({ isCollapsed, profile, isVisible, setSidebarVisibility }) => {
+  const location = useLocation();
   let sidebarMenuClasses = getSidebarMenuClasses(location.pathname);
   const closeSidebar = () => setSidebarVisibility(false);
   const { manageUsersPlaceholder, dashboardPlaceholder } = constants.sidebar;
@@ -26,8 +21,7 @@ const Sidebar = ({
       collapsed={isCollapsed}
       breakPoint="lg"
       toggled={isVisible}
-      onToggle={setSidebarVisibility}
-    >
+      onToggle={setSidebarVisibility}>
       <SidebarHeader>
         {isCollapsed ? (
           <img alt="Icon logo" src="/images/icon-logo.png" />
@@ -39,8 +33,7 @@ const Sidebar = ({
       <Menu iconShape="round">
         <MenuItem
           className={sidebarMenuClasses.dashboard}
-          icon={<i className="fa fa-tachometer-alt" />}
-        >
+          icon={<i className="fa fa-tachometer-alt" />}>
           <NavLink onClick={closeSidebar} to="/dashboard">
             {dashboardPlaceholder}
           </NavLink>
@@ -48,8 +41,7 @@ const Sidebar = ({
         {profile.is_admin ? (
           <MenuItem
             className={sidebarMenuClasses.manageUsers}
-            icon={<i className="fa fa-user-plus" />}
-          >
+            icon={<i className="fa fa-user-plus" />}>
             <NavLink onClick={closeSidebar} to="/manage-users">
               {manageUsersPlaceholder}
             </NavLink>

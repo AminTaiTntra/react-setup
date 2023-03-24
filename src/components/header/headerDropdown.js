@@ -1,11 +1,11 @@
 import React from 'react';
 import { Dropdown } from 'react-bootstrap';
 import { constants } from '../../constants';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const HeaderDropdown = ({ profile, logout }) => {
   const { profilePlaceholder, logOutPlaceholder } = constants.header;
-  const history = useHistory();
+  const history = useNavigate();
   const navigateToProfilePage = () => history.push('/profile');
   return (
     <Dropdown>
