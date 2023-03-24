@@ -14,6 +14,7 @@ import { useStateCallback } from '../../utility/common';
 import { constants } from '../../constants';
 import { sortingMethodIconMapper } from '../../utility/mapper';
 import '../../styles/dashboard.scss';
+import { useTranslation } from 'react-i18next';
 
 const Dashboard = ({ setDashboardData }) => {
   useEffect(() => {
@@ -258,10 +259,11 @@ const Dashboard = ({ setDashboardData }) => {
     onHeaderClick,
     icons: [{ className: sortingMethodIconMapper[sortMethod] }],
   };
+  const {t} = useTranslation()
   // const { addCompanyTooltip, removeCompanyTooltip } = constants.tooltips;
   // const { entities, urls, datapoints, newEntities } = dashboardDetails;
 
-  return <h1>Dashboard</h1>;
+  return <h1>{t("Welcome")}</h1>;
 };
 
 export default Dashboard;
