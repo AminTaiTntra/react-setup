@@ -1,127 +1,111 @@
 import React from 'react';
 import Col from 'react-bootstrap/Col';
-import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
-import { useForm } from 'react-hook-form';
-import { Button, Input } from '../../components';
-import { Formik } from 'formik';
+import { Input } from '../../components';
+
 import signupSchema from '../../schema/signup';
+import { useTranslation } from 'react-i18next';
 
-const GeneralInformationForm = () => {
-  const getInitialState = () => {
-    const data = {
-      username: '',
-      password: ''
-    }
-
-    return {
-      ...data
-    }
-  }
-  const getValidationSchema = () => {
-    return signupSchema();
-  };
+const GeneralInformationForm = ({
+  values,
+  errors,
+  touched,
+  handleBlur,
+  handleChange,
+  handleSubmit,
+}) => {
+  console.log('VALUES', values, 'EE', errors, touched);
+  const { t } = useTranslation();
   return (
     <div>
-      <h4>General Information</h4>
-      <Formik
-        // enableReinitialize
-        initialValues={getInitialState()}
-        validationSchema={signupSchema}
-        onSubmit={(values, { setSubmitting }) => {
-          console.log('values',values);
-        }}
-        validateOnChange
-        validateOnBlur
-      >
-        {
-          ({
-            values,
-            errors,
-            touched,
-            handleChange,
-            handleBlur,
-            handleSubmit,
-            isSubmitting,
-            setFieldValue,
-            setValues
-          }) => {
-            console.log('errors',errors ,values);
-            return (
-              <form onSubmit={handleSubmit}>
-                <Row className="mb-3">
-                  <Col>
-                    <Input
-                      label={'Username'}
-                      placeholder={'Enter Username'}
-                      onChange={(e) => {
-                        handleChange(e)
-                      }
-                      }
-                      name="username"
-                      onBlur={handleBlur}
-                      value={values.username}
-                      showError={errors.username && touched.username}
-                      error={errors.username}
-                    />
-                  </Col>
-                  <Col>
-                    <Input
-                      label={'Password'}
-                      type="password"
-                      placeholder={'Enter Password'}
-                      onChange={(e) => {
-                        handleChange(e)
-                      }
-                      }
-                      onBlur={handleBlur}
-                      value={values.password}
-                      showError={errors.password && touched.password}
-                      error={errors.password}
-                      name="password"
-                    />
-                  </Col>
-                  {/* <Col>
-            <Input
-              label={'Confirm Password'}
-              type="password"
-              placeholder={'Confirm Password'}
-            />
-          </Col> */}
-                </Row>
-                {/* <Row>
-          <Col className='mb-2' sm={4}>
-            <Input
-              label={'First Name'}
-              type="input"
-              placeholder={'First Name'}
-              inputRef={register}
-            />
-          </Col>
-          <Col className='mb-2' sm={4}>
-            <Input
-              label={'Last Name'}
-              type="input"
-              placeholder={'Last Name'}
-            />
-          </Col>
-        </Row> */}
-                <div className="text-center">
-                  <Button
-                    label={"Sign Up"}
-                    onClick={() => {
-                      handleSubmit()
-                    }}
-                  />
-                </div>
-              </form>
-            )
-          }
-        }
-      </Formik>
+      <h4>{t('signup.generalInformation')}</h4>
+      {/* {console.log('valuesInForm ', values, errors)} */}
+      {/* <form onSubmit={handleSubmit}> */}
+      <Row className="mb-3">
+        <Col>
+          <Input
+            label={t('signup.usernameLabel')}
+            isRequired={true}
+            placeholder={t('signup.usernamePlaceholder')}
+            onChange={(e) => {
+              handleChange(e);
+            }}
+            name="username"
+            onBlur={handleBlur}
+            value={values.username}
+            showError={errors.username && touched.username}
+            error={errors.username}
+          />
+        </Col>
+        <Col>
+          <Input
+            label={t('signup.passwordLabel')}
+            isRequired={true}
+            type="password"
+            placeholder={t('signup.passwordPlaceholder')}
+            onChange={(e) => {
+              handleChange(e);
+            }}
+            onBlur={handleBlur}
+            value={values.password}
+            showError={errors.password && touched.password}
+            error={errors.password}
+            name="password"
+          />
+        </Col>
+        <Col>
+          <Input
+            label={t('signup.confirmPasswordLabel')}
+            type="password"
+            isRequired={true}
+            placeholder={t('signup.confirmPasswordLabel')}
+            onChange={(e) => {
+              handleChange(e);
+            }}
+            name="confirmPassword"
+            onBlur={handleBlur}
+            value={values.confirmPassword}
+            showError={errors.confirmPassword && touched.confirmPassword}
+            error={errors.confirmPassword}
+          />
+        </Col>
+      </Row>
+      <Row>
+        <Col className="mb-2" sm={4}>
+          <Input
+            label={t('signup.firstName')}
+            isRequired={true}
+            type="input"
+            placeholder={t('signup.firstName')}
+            onChange={(e) => {
+              handleChange(e);
+            }}
+            name="firstName"
+            onBlur={handleBlur}
+            value={values.firstName}
+            showError={errors.firstName && touched.firstName}
+            error={errors.firstName}
+          />
+        </Col>
+        <Col className="mb-2" sm={4}>
+          <Input
+            label={t('signup.lastName')}
+            isRequired={true}
+            type="input"
+            placeholder={t('signup.lastName')}
+            onChange={(e) => {
+              handleChange(e);
+            }}
+            name="lastName"
+            onBlur={handleBlur}
+            value={values.lastName}
+            showError={errors.lastName && touched.lastName}
+            error={errors.lastName}
+          />
+        </Col>
+      </Row>
+      {/* </form> */}
     </div>
-
-    // <div>GeneralInformationForm</div>
   );
 };
 

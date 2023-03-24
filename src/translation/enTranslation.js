@@ -3,9 +3,43 @@ export const enTranslation = {
   Dashboard: {
     title: 'DashBoard',
   },
-  login :{
-    email : "Email",
-    password: "Password"
-  }
+  login: {
+    email: 'Email',
+    password: 'Password',
+  },
+  signup: {
+    generalInformation: 'General Information',
+    usernameLabel: 'Username',
+    usernamePlaceholder: 'Enter Username',
+    passwordLabel: 'Password',
+    passwordPlaceholder: 'Enter Password',
+    confirmPasswordLabel: 'Confirm Password',
+    firstName: 'First Name',
+    lastName: 'Last Name',
+    signupButton: 'Sign Up',
+    companyDetails: 'Company Details',
+    companyName: 'Company Name',
+    employeeCode: 'Employee Code',
+    address1: 'Address 1',
+    address2: 'Address 2',
+    country: 'Country',
+    city: 'City',
+    zipCode: 'Zip Code',
+    isd: 'ISD',
+    enter : "Enter",
+    mobile1: 'Mobile 1',
+    mobile2: 'Mobile 2',
+    areaCode: 'Area Code',
+    officePhone1: 'Office Phone 1',
+    officePhone2: 'Office Phone 2',
+    faxNo: 'Fax No',
+    emilAddress1: 'Email Address 1',
+    emilAddress2: 'Email Address 2',
+    website: 'Website',
+    skype: 'Skype',
+    weChat: 'We Chat',
+    business: 'Business',
+    businessRegNo: 'Business Reg No',
+    rapId: 'Rap ID',
+  },
 };
-
