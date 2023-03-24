@@ -56,7 +56,7 @@ const GetLoginPageInformation = () => {
                 <Col>
                   <Input
                     label={'Email'}
-                    placeholder={'Enter Username'}
+                    placeholder={'Enter email'}
                     onChange={(e) => {
                       handleChange(e);
                     }}
@@ -73,7 +73,7 @@ const GetLoginPageInformation = () => {
                   <Input
                     label={'Password'}
                     type="password"
-                    placeholder={'Enter Password'}
+                    placeholder={'Enter password'}
                     onChange={(e) => {
                       handleChange(e);
                     }}
@@ -88,10 +88,11 @@ const GetLoginPageInformation = () => {
 
               <div className="text-center">
                 <Button
-                  label={'Sign Up'}
+                  label={'Login'}
                   onClick={() => {
                     handleSubmit();
                   }}
+                  
                 />
               </div>
             </form>
