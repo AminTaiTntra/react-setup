@@ -10,6 +10,7 @@ import '../../styles/common/button.scss';
 import '../../styles/login.scss';
 import { Button, Input } from '../../components';
 import signupSchema from '../../schema/signup';
+import { Link } from 'react-router-dom';
 const GetLoginPageInformation = () => {
   const { title, buttons, emailPlaceholder, passwordPlaceholder } =
     constants.loginPage;
@@ -85,14 +86,18 @@ const GetLoginPageInformation = () => {
                   />
                 </Col>
               </Row>
-
+              <Row className="mb-3">
+              <div>
+                Don't have an account?
+                <Link to={'/signup'}>sign Up</Link>
+              </div>
+              </Row>
               <div className="text-center">
                 <Button
                   label={'Login'}
                   onClick={() => {
                     handleSubmit();
                   }}
-                  
                 />
               </div>
             </form>
