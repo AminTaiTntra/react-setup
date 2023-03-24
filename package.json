@@ -25,6 +25,7 @@
     "react-bootstrap": "^2.7.2",
     "react-bootstrap-typeahead": "^6.0.2",
     "react-dom": "^18.2.0",
+    "react-glider": "^4.0.2",
     "react-hook-form": "^7.43.7",
     "react-hot-toast": "^2.4.0",
     "react-i18next": "^12.2.0",

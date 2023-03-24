@@ -1,43 +1,23 @@
-import React from 'react';
-import ReactSlider from 'react-slick';
-import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css';
-
-const Slider = ({ children }) => {
-  let settings = {
-    dots: true,
+import Glider from 'react-glider';
+import 'glider-js/glider.min.css';
+const Slider = function ({ children, className, settingProps = {} }) {
+  const setting = {
+    dots: false,
     infinite: false,
     speed: 1000,
-    slidesToShow: 3,
-    slidesToScroll: 3,
+    lazyLoad: true,
+    slidesToShow: 5,
+    slidesToScroll: 1,
     initialSlide: 0,
-    responsive: [
-      {
-        breakpoint: 1200,
-        settings: {
-          slidesToShow: 3,
-          slidesToScroll: 3,
-          dots: true,
-        },
-      },
-      {
-        breakpoint: 1199,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 2,
-          dots: true,
-        },
-      },
-      {
-        breakpoint: 767,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-          dots: true,
-        },
-      },
-    ],
+    skipTrack: true,
+    ...settingProps,
   };
-  return <ReactSlider {...settings}>{children}</ReactSlider>;
+
+  return (
+    <Glider className={className}>
+      <div className="glider-track">{children}</div>
+    </Glider>
+  );
 };
+
 export default Slider;
