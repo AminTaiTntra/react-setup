@@ -1,14 +1,14 @@
-import { getDashBoardDetails } from "../apis/dashboard";
-import { incrementLoaderCount, decrementLoaderCount } from "./loader";
+import { getDashBoardDetails } from '../apis/dashboard';
+import { incrementLoaderCount, decrementLoaderCount } from './loader';
 
-const SET_DASHBOARD_DETAILS = "SET_DASHBOARD_DETAILS";
+const SET_DASHBOARD_DETAILS = 'SET_DASHBOARD_DETAILS';
 
 const setDashboardData = () => (dispatch) => {
   dispatch(incrementLoaderCount());
   return getDashBoardDetails()
     .then((res) => {
       if (res.data.status) {
-        let dashboardDetails = {
+        const dashboardDetails = {
           entities: res.data.data ? res.data.data.entities : 0,
           urls: res.data.data ? res.data.data.urls : 0,
           datapoints: res.data.data ? res.data.data.datapoints : 0,

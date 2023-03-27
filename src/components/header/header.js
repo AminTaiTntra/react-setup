@@ -1,7 +1,7 @@
-import { useLocation } from 'react-router-dom';
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Navbar, Container } from 'react-bootstrap';
+import { useTranslation } from 'react-i18next';
 import { HeaderDropdown } from '../index';
 import { logout } from '../../actions/login';
 import { setProfileData } from '../../actions/profile';
@@ -9,9 +9,8 @@ import {
   setSidebarCollapse,
   setSidebarVisibility,
 } from '../../actions/sidebar';
-import { getHeaderTitle, showToast } from '../../utility/common';
+import { showToast } from '../../utility/common';
 import '../../styles/header.scss';
-import { useTranslation } from 'react-i18next';
 import LanguageDropDown from './languageDropdown';
 
 const Header = ({
@@ -30,10 +29,8 @@ const Header = ({
     });
   }, []);
 
-  const location = useLocation();
   const toggleCollapse = () => setSidebarCollapse(!isCollapsed);
   const toggleVisibility = () => setSidebarVisibility(!isVisible);
-  const headerTitle = getHeaderTitle(location.pathname);
 
   return (
     <Navbar fixed="top">
@@ -45,8 +42,7 @@ const Header = ({
           onClick={toggleCollapse}
         />
         <div className="page-title">
-          {console.log("Dashboard",t('Dashboard') )}
-          <h1>{t("Dashboard.title")}</h1> 
+          <h1>{t('dashboardPage.dashboard')}</h1>
         </div>
         <div className="navigation-items">
           <HeaderDropdown profile={profile} logout={logout} />
