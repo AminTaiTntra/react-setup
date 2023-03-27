@@ -3,7 +3,9 @@ import { useStateCallback } from '../../utility/common';
 import { constants } from '../../constants';
 import { sortingMethodIconMapper } from '../../utility/mapper';
 import '../../styles/dashboard.scss';
-import { useTranslation } from 'react-i18next';
+import carouselData from '../../schema/carouselData';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { Slider } from '../../components';
 
 const Dashboard = ({ setDashboardData }) => {
   useEffect(() => {
@@ -59,9 +61,13 @@ const Dashboard = ({ setDashboardData }) => {
     onHeaderClick,
     icons: [{ className: sortingMethodIconMapper[sortMethod] }],
   };
-  const { t } = useTranslation();
 
-  return <h1>{t('Welcome')}</h1>;
+  return (
+    //Call Slider component/.
+    <div className="container-sm">
+      <Slider data={carouselData} hasArrow={true} hasDots={true} />
+    </div>
+  );
 };
 
 export default Dashboard;
