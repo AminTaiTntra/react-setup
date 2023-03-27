@@ -2,7 +2,9 @@ import * as Yup from 'yup';
 
 const signupSchema = Yup.object({
   username: Yup.string()
-    .required('This field is required.'),
+    .required('This field is required.')
+    .min(8, 'Length of the user name field should be 8 to 15 characters')
+    .max(15, 'Length of the user name field should be 8 to 15 characters'),
   password: Yup.string()
     .required('This field is required.')
     .min(6, 'Password must be 6 characters long.')
@@ -10,40 +12,46 @@ const signupSchema = Yup.object({
   confirmPassword: Yup.string()
     .required('This field is required.')
     .oneOf([Yup.ref('password'), null], 'Passwords must match'),
-  firstName: Yup.string().required('This field is required.'),
-  lastName: Yup.string().required('This field is required.'),
-  companyName: Yup.string().required('This field is required.'),
-  employeeCode: Yup.string().required('This field is required.'),
-  address1: Yup.string().required('This field is required.'),
-  // address2: Yup.string().required('This field is required.'),
-  country: Yup.string().required('This field is required.'),
-  city: Yup.string().required('This field is required.'),
-  zipCode: Yup.string().matches(/^.*^[0-9]+$/, 'Please Enter valid number'),
-  // isd: Yup.string().required('This field is required.'),
+  firstName: Yup.string()
+    .required('This field is required.')
+    .max(50, 'Maximum 50 characters are allowed.'),
+  lastName: Yup.string()
+    .required('This field is required.')
+    .max(50, 'Maximum 50 characters are allowed.'),
+  companyName: Yup.string().required('Enter Company Name'),
+  address1: Yup.string().required('Enter Address 1'),
+  country: Yup.string().required('Select Country'),
+  city: Yup.string().required('Select City'),
+  zipCode: Yup.string().matches(/^.*^[a-z0-9]+$/, 'Please Enter valid number'),
   mobile1: Yup.string()
     .required('This field is required.')
-    .matches(/^.*^[0-9]+$/, 'Please Enter valid number'),
-  mobile2: Yup.string().matches(/^.*^[0-9]+$/, 'Please Enter valid number'),
-  // areaCode: Yup.string().required('This field is required.'),
-  officePhone1: Yup.string().matches(
-    /^.*^[0-9]+$/,
-    'Please Enter valid number',
-  ),
-  officePhone2: Yup.string().matches(
-    /^.*^[0-9]+$/,
-    'Please Enter valid number',
-  ),
-  // faxNo: Yup.string().required('This field is required.'),
+    .matches(/^.*^[0-9]+$/, 'Please Enter valid number')
+    .min(5, 'minimum 5')
+    .max(13, 'maximum 13'),
+  mobile2: Yup.string()
+    .matches(/^.*^[0-9]+$/, 'Please Enter valid number')
+    .min(5, 'minimum 5')
+    .max(13, 'maximum 13'),
+  officePhone1: Yup.string()
+    .matches(/^.*^[0-9]+$/, 'Please Enter valid number')
+    .min(4, 'minimum 4')
+    .max(13, 'maximum 13'),
+  officePhone2: Yup.string()
+    .matches(/^.*^[0-9]+$/, 'Please Enter valid number')
+    .min(4, 'minimum 4')
+    .max(13, 'maximum 13'),
+  faxNo: Yup.string()
+    .matches(/^.*^[0-9]+$/, 'Please Enter valid number')
+    .min(4, 'minimum 4')
+    .max(13, 'maximum 13'),
   emilAddress1: Yup.string()
     .required('This field is required.')
-    .email('Enter valid email address.'),
-  emilAddress2: Yup.string().email('Enter valid email address.'),
-  // website: Yup.string().required('This field is required.'),
-  // skype: Yup.string().required('This field is required.'),
-  // weChat: Yup.string().required('This field is required.')
-  // business: Yup.string().required('This field is required.'),
-  // businessRegNo: Yup.string().required('This field is required.'),
-  // rapId: Yup.string().required('This field is required.'),
+    .email('Please enter a valid email address.'),
+  emilAddress2: Yup.string().email('Please enter a valid email address.'),
+  rapId: Yup.string()
+    .matches(/^.*^[0-9]+$/, 'Please Enter valid number')
+    .min(4, 'minimum 4')
+    .max(13, 'maximum 13'),
 });
 
 export default signupSchema;

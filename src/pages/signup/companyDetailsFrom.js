@@ -36,21 +36,6 @@ const CompanyDetailsFrom = ({
           </Col>
           <Col>
             <Input
-              label={t('signup.employeeCode')}
-              isRequired={true}
-              placeholder={t('signup.employeeCode')}
-              onChange={(e) => {
-                handleChange(e);
-              }}
-              onBlur={handleBlur}
-              value={values.employeeCode}
-              showError={errors.employeeCode && touched.employeeCode}
-              error={errors.employeeCode}
-              name="employeeCode"
-            />
-          </Col>
-          <Col>
-            <Input
               label={t('signup.address1')}
               placeholder={t('signup.address1')}
               isRequired={true}
