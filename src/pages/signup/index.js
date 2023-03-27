@@ -55,7 +55,7 @@ const Signup = () => {
           initialValues={getInitialState()}
           validationSchema={signupSchema}
           onSubmit={(values, { validate }) => {
-            console.log('values', values);
+            console.log('vales', values);
             // validate(values);
           }}
           validateOnChange

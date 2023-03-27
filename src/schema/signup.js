@@ -2,8 +2,7 @@ import * as Yup from 'yup';
 
 const signupSchema = Yup.object({
   username: Yup.string()
-    .required('This field is required.')
-    .email('Enter valid email address.'),
+    .required('This field is required.'),
   password: Yup.string()
     .required('This field is required.')
     .min(6, 'Password must be 6 characters long.')
@@ -19,19 +18,29 @@ const signupSchema = Yup.object({
   // address2: Yup.string().required('This field is required.'),
   country: Yup.string().required('This field is required.'),
   city: Yup.string().required('This field is required.'),
-  // zipCode: Yup.string().required('This field is required.'),
+  zipCode: Yup.string().matches(/^.*^[0-9]+$/, 'Please Enter valid number'),
   // isd: Yup.string().required('This field is required.'),
-  mobile1: Yup.string().required('This field is required.'),
-  // mobile2: Yup.string().required('This field is required.'),
+  mobile1: Yup.string()
+    .required('This field is required.')
+    .matches(/^.*^[0-9]+$/, 'Please Enter valid number'),
+  mobile2: Yup.string().matches(/^.*^[0-9]+$/, 'Please Enter valid number'),
   // areaCode: Yup.string().required('This field is required.'),
-  // officePhone1: Yup.string().required('This field is required.'),
-  // officePhone2: Yup.string().required('This field is required.'),
+  officePhone1: Yup.string().matches(
+    /^.*^[0-9]+$/,
+    'Please Enter valid number',
+  ),
+  officePhone2: Yup.string().matches(
+    /^.*^[0-9]+$/,
+    'Please Enter valid number',
+  ),
   // faxNo: Yup.string().required('This field is required.'),
-  emilAddress1: Yup.string().required('This field is required.'),
-  // emilAddress2: Yup.string().required('This field is required.'),
+  emilAddress1: Yup.string()
+    .required('This field is required.')
+    .email('Enter valid email address.'),
+  emilAddress2: Yup.string().email('Enter valid email address.'),
   // website: Yup.string().required('This field is required.'),
   // skype: Yup.string().required('This field is required.'),
-  // weChat: Yup.string().required('This field is required.'),
+  // weChat: Yup.string().required('This field is required.')
   // business: Yup.string().required('This field is required.'),
   // businessRegNo: Yup.string().required('This field is required.'),
   // rapId: Yup.string().required('This field is required.'),

@@ -4,10 +4,13 @@ export const enTranslation = {
     title: 'DashBoard',
   },
   login: {
+    login :'login',
     email: 'Email',
     password: 'Password',
+    Do_not_have_an_account_yet: "Don't have an account yet ? ",
   },
   signup: {
+    signup: 'sign Up',
     generalInformation: 'General Information',
     usernameLabel: 'Username',
     usernamePlaceholder: 'Enter Username',
@@ -26,7 +29,7 @@ export const enTranslation = {
     city: 'City',
     zipCode: 'Zip Code',
     isd: 'ISD',
-    enter : "Enter",
+    enter: 'Enter',
     mobile1: 'Mobile 1',
     mobile2: 'Mobile 2',
     areaCode: 'Area Code',
@@ -41,5 +44,14 @@ export const enTranslation = {
     business: 'Business',
     businessRegNo: 'Business Reg No',
     rapId: 'Rap ID',
+  },
+  forgotPassword: {
+    forgotPassword: 'Forgot Password ?',
+    recover_your_password: 'Recover Your Password',
+    username: 'Username',
+    recoverButton: 'Recover',
+    back_to_login: 'Back To Login',
+    forgotPassword_comment:
+      'Fill your username below and we will send you an email with further instructions',
   },
 };

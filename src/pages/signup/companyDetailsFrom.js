@@ -119,6 +119,7 @@ const CompanyDetailsFrom = ({
               onChange={(e) => {
                 handleChange(e);
               }}
+              // type="number"
               name="zipCode"
               onBlur={handleBlur}
               value={values.zipCode}
