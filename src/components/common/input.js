@@ -78,7 +78,10 @@ const Input = ({
         )}
         {prependText && <span className="numbers">{prependText}</span>}
       </InputGroup>
+    {console.log(showError , error,"showerror")}
+
       {showError && error && (
+        
         <Form.Text className="error-text">{error}</Form.Text>
       )}
     </Form.Group>

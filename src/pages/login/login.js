@@ -9,7 +9,6 @@ import '../../styles/common/form.scss';
 import '../../styles/common/button.scss';
 import '../../styles/login.scss';
 import { Button, Input } from '../../components';
-import signupSchema from '../../schema/signup';
 import { Link } from 'react-router-dom';
 const GetLoginPageInformation = () => {
   const { title, buttons, emailPlaceholder, passwordPlaceholder } =
