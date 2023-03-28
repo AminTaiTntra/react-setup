@@ -1,6 +1,6 @@
 import * as Yup from 'yup';
 
-const login = Yup.object({
+const loginSchema = Yup.object({
   email: Yup.string()
     .required('This field is required.')
     .email('Enter valid email address.'),
@@ -10,4 +10,4 @@ const login = Yup.object({
     .max(12, "Password can't be longer than 12 characters."),
 });
 
-export default login;
+export default loginSchema;

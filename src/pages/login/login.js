@@ -1,108 +1,110 @@
-import React, { useState, useEffect } from 'react';
-import { Form, Container, Alert } from 'react-bootstrap';
-import { useForm } from 'react-hook-form';
-import { useTranslation } from 'react-i18next';
-import { yupResolver } from '@hookform/resolvers/yup';
-import { Input, Button } from '../../components';
-import { showToast, useStateCallback } from '../../utility/common';
-import schema from '../../schema/login';
-import { constants, messages } from '../../constants';
+import { Formik } from 'formik';
+import { useState } from 'react';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+import loginSchema from '../../schema/login';
+import { constants } from '../../constants';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../../styles/common/form.scss';
 import '../../styles/common/button.scss';
 import '../../styles/login.scss';
+import { Button, Input } from '../../components';
 import { Link } from 'react-router-dom';
-
-const Login = ({ setUserToken }) => {
-  useEffect(() => {
-    if (localStorage.getItem('SHOW_TOAST')) {
-      localStorage.removeItem('SHOW_TOAST');
-      showToast(messages.sessionExpired);
-    }
-  }, []);
-  const { 
-    title, 
-    buttons, 
-    emailPlaceholder, 
-    passwordPlaceholder 
-  } = constants.loginPage;
-
-  const [isLoading, setLoading] = useStateCallback(false);
-  const [errorMessage, setErrorMessage] = useState('');
-  const { t } = useTranslation()
-  const { 
-    register, 
-    handleSubmit, 
-    // errors, 
-    // formState 
-  } = useForm({
-    mode: 'onChange',
-    reValidateMode: 'onChange',
-    defaultValues: {
+const GetLoginPageInformation = () => {
+  const { title, buttons, emailPlaceholder, passwordPlaceholder } =
+    constants.loginPage;
+  const getInitialState = () => {
+    const data = {
       email: '',
       password: '',
-      // rememberMe: false,
-    },
-    resolver: yupResolver(schema),
-  });
-  const onSubmit = (data) => {
-    setLoading(true, () => {
-      setUserToken(data)
-        .then((res) => {
-          if (!res.status) {
-            setErrorMessage(res.error_message);
-          }
-          setLoading(false);
-        })
-        .catch(() => setLoading(false));
-    });
-  };
-  // const { touched } = formState;
+    };
 
+    return {
+      ...data,
+    };
+  };
+
+  const [errorMessage, setErrorMessage] = useState('');
   return (
-    <div className="min-vh-100 d-flex justify-content-center align-items-center login-body">
-      <Container className="d-flex justify-content-center align-items-center">
-        <div className="login-box">
-          <div className="text-center">
-            <img src="/images/logo.png" alt="Logo" className="logo" />
-            <h1 className="heading">{title}</h1>
-            {errorMessage && <Alert variant="danger">{errorMessage}</Alert>}
-          </div>
-          <Form onSubmit={handleSubmit(onSubmit)}>
-            <Input
-              controlId="formEmail"
-              placeholder={t('login.email')}
-              // error={errors.email && errors.email.message}
-              // showError={touched && touched.email}
-              inputRef={{...register("name", { required: true })}}
-              name="email"
-            />
-            <Input
-              controlId="formPassword"
-              type="password"
-              placeholder={t('login.password')}
-              // error={errors.password && errors.password.message}
-              // showError={touched && touched.password}
-              inputRef={register}
-              name="password"
-            />
-            <div>Don't have an account?
-              <Link to={'/signup'}>sign Up</Link>
-            </div>
-            <div className="text-center">
-              <Button
-                disabled={isLoading}
-                isLoading={isLoading}
-                label={buttons.login}
-                onClick={handleSubmit(onSubmit)}
-                type="submit"
-              />
-            </div>
-          </Form>
-        </div>
-      </Container>
+    <div>
+      <div className="text-center">
+        <img src="/images/logo.png" alt="Logo" className="logo" />
+        <h1 className="heading">{title}</h1>
+      </div>
+      <Formik
+        initialValues={getInitialState()}
+        validationSchema={loginSchema}
+        onSubmit={(values, { setSubmitting }) => {
+          console.log('values', values);
+        }}
+        validateOnChange
+        validateOnBlur>
+        {({
+          values,
+          errors,
+          touched,
+          handleChange,
+          handleBlur,
+          handleSubmit,
+          isSubmitting,
+          setFieldValue,
+          setValues,
+        }) => {
+          return (
+            <form onSubmit={handleSubmit}>
+              <Row className="mb-3">
+                <Col>
+                  <Input
+                    label={'Email'}
+                    placeholder={'Enter email'}
+                    onChange={(e) => {
+                      handleChange(e);
+                    }}
+                    name="email"
+                    onBlur={handleBlur}
+                    value={values.username}
+                    showError={errors.email && touched.email}
+                    error={errors.email}
+                  />
+                </Col>
+              </Row>
+              <Row className="mb-3">
+                <Col>
+                  <Input
+                    label={'Password'}
+                    type="password"
+                    placeholder={'Enter password'}
+                    onChange={(e) => {
+                      handleChange(e);
+                    }}
+                    onBlur={handleBlur}
+                    value={values.password}
+                    showError={errors.password && touched.password}
+                    error={errors.password}
+                    name="password"
+                  />
+                </Col>
+              </Row>
+              <Row className="mb-3">
+              <div>
+                Don't have an account?
+                <Link to={'/signup'}>sign Up</Link>
+              </div>
+              </Row>
+              <div className="text-center">
+                <Button
+                  label={'Login'}
+                  onClick={() => {
+                    handleSubmit();
+                  }}
+                />
+              </div>
+            </form>
+          );
+        }}
+      </Formik>
     </div>
   );
 };
 
-export default Login;
+export default GetLoginPageInformation;

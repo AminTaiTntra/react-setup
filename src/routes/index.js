@@ -12,6 +12,7 @@ import PublicRoute from './publicRoute';
 import UserRoute from './userRoute';
 import Profile from '../pages/profile';
 import Signup from '../pages/signup';
+import ForgotPassword from '../pages/forgotPassword';
 
 const routerMapper = [
   {
@@ -33,6 +34,11 @@ const routerMapper = [
     component: Profile,
     routeComponent: UserRoute,
   },
+  {
+    path: '/forgotPassword',
+    component: ForgotPassword,
+    routeComponent: PublicRoute
+  }
 ];
 
 const RouterConfig = () => {

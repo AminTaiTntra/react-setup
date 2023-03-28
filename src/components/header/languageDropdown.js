@@ -16,7 +16,6 @@ const LanguageDropDown = () => {
         <Form.Select onChange={handleChange} value={selectedLanguage} >
           <option value="chi">Chines</option>
           <option value="en">English</option>
-          <option value="fr">French</option>
         </Form.Select>
       );
 
