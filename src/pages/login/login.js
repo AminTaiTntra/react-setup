@@ -20,21 +20,17 @@ const Login = ({ setUserToken }) => {
       showToast(messages.sessionExpired);
     }
   }, []);
-  const { 
-    title, 
-    buttons, 
-    emailPlaceholder, 
-    passwordPlaceholder 
-  } = constants.loginPage;
+  const { title, buttons, emailPlaceholder, passwordPlaceholder } =
+    constants.loginPage;
 
   const [isLoading, setLoading] = useStateCallback(false);
   const [errorMessage, setErrorMessage] = useState('');
-  const { t } = useTranslation()
-  const { 
-    register, 
-    handleSubmit, 
-    // errors, 
-    // formState 
+  const { t } = useTranslation();
+  const {
+    register,
+    handleSubmit,
+    // errors,
+    // formState
   } = useForm({
     mode: 'onChange',
     reValidateMode: 'onChange',
@@ -74,7 +70,7 @@ const Login = ({ setUserToken }) => {
               placeholder={t('login.email')}
               // error={errors.email && errors.email.message}
               // showError={touched && touched.email}
-              inputRef={{...register("name", { required: true })}}
+              inputRef={{ ...register('name', { required: true }) }}
               name="email"
             />
             <Input
@@ -86,8 +82,9 @@ const Login = ({ setUserToken }) => {
               inputRef={register}
               name="password"
             />
-            <div>Don't have an account?
-              <Link to={'/signup'}>sign Up</Link>
+            <div>
+              {t("login.Do_not_have_an_account_yet")}
+              <Link to={'/signup'}>{t("signup.signup")}</Link>
             </div>
             <div className="text-center">
               <Button
@@ -99,6 +96,10 @@ const Login = ({ setUserToken }) => {
               />
             </div>
           </Form>
+          <div>
+
+            <Link to={'/forgotPassword'}>{t("forgotPassword.forgotPassword")}</Link>
+          </div>
         </div>
       </Container>
     </div>

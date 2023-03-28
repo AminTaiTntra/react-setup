@@ -1,9 +1,8 @@
-import i18n  from 'i18next';
+import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
 import LanguageDetector from 'i18next-browser-languagedetector';
-import {frTranslation} from "../translation/frTranslation"
-import {chiTranslation} from "../translation/chiTranslation"
-import {enTranslation} from '../translation/enTranslation'
+import { chiTranslation } from '../translation/chiTranslation';
+import { enTranslation } from '../translation/enTranslation';
 
 i18n
   .use(initReactI18next)
@@ -16,11 +15,6 @@ i18n
           ...chiTranslation,
         },
       },
-      fr: {
-        translation: {
-          ...frTranslation,
-        },
-      },
       en: {
         translation: {
           ...enTranslation,
@@ -31,7 +25,7 @@ i18n
       escapeValue: false, // react already safes from xss
       format: (value, format, lng) => {
         let returnValue = value;
-        if (format === "number") {
+        if (format === 'number') {
           returnValue = new Intl.NumberFormat(lng).format(value);
         }
         return returnValue;
