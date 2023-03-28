@@ -14,13 +14,77 @@ const GeneralInformationForm = ({
   handleChange,
   handleSubmit,
 }) => {
-  console.log('VALUES', values, 'EE', errors, touched);
   const { t } = useTranslation();
   return (
     <div>
+      <h4>General Information</h4>
+      <Formik
+        initialValues={getInitialState()}
+        validationSchema={signupSchema}
+        onSubmit={(values, { setSubmitting }) => {
+          console.log('values', values);
+        }}
+        validateOnChange
+        validateOnBlur>
+        {({
+          values,
+          errors,
+          touched,
+          handleChange,
+          handleBlur,
+          handleSubmit,
+          isSubmitting,
+          setFieldValue,
+          setValues,
+        }) => {
+          console.log('errors', errors);
+          return (
+            <form onSubmit={handleSubmit}>
+              <Row className="mb-3">
+                <Col>
+                  <Input
+                    label={'Username'}
+                    placeholder={'Enter Username'}
+                    onChange={(e) => {
+                      handleChange(e);
+                    }}
+                    name="username"
+                    onBlur={handleBlur}
+                    value={values.username}
+                    showError={errors.username && touched.username}
+                    error={errors.username}
+                  />
+                </Col>
+                <Col>
+                  <Input
+                    label={'Password'}
+                    type="password"
+                    placeholder={'Enter Password'}
+                    onChange={(e) => {
+                      handleChange(e);
+                    }}
+                    onBlur={handleBlur}
+                    value={values.password}
+                    showError={errors.password && touched.password}
+                    error={errors.password}
+                    name="password"
+                  />
+                </Col>
+              </Row>
+
+              <div className="text-center">
+                <Button
+                  label={'Sign Up'}
+                  onClick={() => {
+                    handleSubmit();
+                  }}
+                />
+              </div>
+            </form>
+          );
+        }}
+      </Formik>
       <h4>{t('signup.generalInformation')}</h4>
-      {/* {console.log('valuesInForm ', values, errors)} */}
-      {/* <form onSubmit={handleSubmit}> */}
       <Row className="mb-3">
         <Col>
           <Input
@@ -104,7 +168,6 @@ const GeneralInformationForm = ({
           />
         </Col>
       </Row>
-      {/* </form> */}
     </div>
   );
 };
