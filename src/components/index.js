@@ -20,7 +20,7 @@ import ConfirmationModal from './common/confirmationModal';
 import TagInput from './common/tagInput';
 import ToolTip from './common/toolTip';
 import Dropdown from './common/dropdown';
-import Carousel from './common/carouselBootstrap';
+import DataCarousel from './common/carouselBootstrap';
 export {
   Footer,
   Header,
@@ -44,5 +44,5 @@ export {
   TagInput,
   ToolTip,
   Dropdown,
-  Carousel,
+  DataCarousel,
 };

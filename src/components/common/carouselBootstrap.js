@@ -1,20 +1,25 @@
-const Carousel = ({ data }) => {
-  console.log("data",data);
+import Carousel from 'react-bootstrap/Carousel';
+
+function DataCarousel({ data }) {
   return (
     <Carousel>
       {data.map((item) => {
         return (
-          <div>
+          <Carousel.Item>
             <img
               className="d-block w-100"
-              src={item.imgUrl}
-              alt={item.imgUrl}
+              src={item.imgLink}
+              alt="First slide"
             />
-          </div>
+            <Carousel.Caption>
+              <h3>First slide label</h3>
+              <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+            </Carousel.Caption>
+          </Carousel.Item>
         );
       })}
     </Carousel>
   );
-};
+}
 
-export default Carousel;
+export default DataCarousel;
