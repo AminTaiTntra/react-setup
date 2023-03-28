@@ -1,7 +1,13 @@
 export const enTranslation = {
   Welcome: 'Welcome to Dashboard',
-  Dashboard: {
-    title: 'DashBoard',
+  dashboardPage: {
+    dashboard: 'Dashboard',
+    search_stock: 'SEARCH STOCK',
+    bid_stone: 'BID STONE',
+    bid_history: 'BID HISTORY',
+    order_history: 'ORDER HISTORY',
+    new_arrival: 'NEW ARRIVAL',
+    my_wishlist: 'MY WISHLIST',
   },
   login: {
     login :'login',
@@ -54,4 +60,5 @@ export const enTranslation = {
     forgotPassword_comment:
       'Fill your username below and we will send you an email with further instructions',
   },
+ 
 };
