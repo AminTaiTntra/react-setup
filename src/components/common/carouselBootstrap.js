@@ -1,4 +1,5 @@
 const Carousel = ({ data }) => {
+  console.log("data",data);
   return (
     <Carousel>
       {data.map((item) => {

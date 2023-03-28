@@ -5,7 +5,7 @@ import { sortingMethodIconMapper } from '../../utility/mapper';
 import '../../styles/dashboard.scss';
 import carouselData from '../../schema/carouselData';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Slider } from '../../components';
+import { Carousel, Slider } from '../../components';
 
 const Dashboard = ({ setDashboardData }) => {
   useEffect(() => {
@@ -63,7 +63,7 @@ const Dashboard = ({ setDashboardData }) => {
   };
 
   return (
-    //Call Slider component/.
+    //Call react glider component.
     <div className="container-sm">
       <Slider data={carouselData} hasArrow={true} hasDots={true} />
     </div>
