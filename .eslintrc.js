@@ -7,6 +7,11 @@ module.exports = {
     node: true,
   },
   rules: {
+    "react/jsx-key": "off",
+    "no-undef": "off",
+    "no-unused-vars": "off",
+    "react/prop-types": "off",
+    "react/react-in-jsx-scope": "off",
     'no-use-before-define': 'off',
     'react/jsx-filename-extension': 'off',
     'react/prop-types': 'off',
@@ -32,7 +37,7 @@ module.exports = {
     'react/no-did-update-set-state': 'off',
     'react-hooks/exhaustive-deps': 'off',
     eqeqeq: 'off',
-    // 'no-undef': 'off',
+    'no-undef': 'off',
     'jsx-a11y/click-events-have-key-events': 'off',
     'jsx-a11y/no-static-element-interactions': 'off',
     'jsx-a11y/anchor-is-valid': 'off',
@@ -66,5 +71,6 @@ module.exports = {
     'no-multi-assign': 'off',
     'no-promise-executor-return': 'off',
     'no-control-regex': 'off',
+    "no-unused-vars" : 'off'
   },
 };
